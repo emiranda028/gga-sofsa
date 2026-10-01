@@ -1392,31 +1392,58 @@ function renderT(){
   }).join('');
 }
 
-function sysP(){
+// Contexto selectivo: sólo se envían a la IA las secciones relevantes para la pregunta
+var CTX_STOP=('que cual cuales cuanto cuanta cuantos cuantas como para por con del los las una unos unas hay esta estan este esto esos esas tiene tienen sobre total totales monto montos importe todo todos todas dame decime mostrame quiero saber hola buenos buenas dias tardes noches gracias favor podes puedes hace hacer cuando donde quien sus mas menos entre desde hasta tambien pero porque estado datos info informacion lista listado necesito hoy anio vigente actual actuales queda quedan cada algun alguna algo nada suma suman sumar sumado falta faltan detalle detalles resumen novedades noticias').split(' ');
+// Raíces que eligen secciones: no se usan como términos de búsqueda
+var CTX_KW=['pendient','abrir','publicar','firmar','liberar','orden','tramite','emergencia','habitual','urgen','linea','rdp','redetermin','modo','contratacion','compra','expediente','legitim','abono','impago','contabiliz','pagad','adjudic','ranking','proveedor','cuota','presupuest','devengad','teoric','credito','deuda','exigible','sifer','fuente','decision','gga','solicitad','tesoro','ejecucion','activo','estado'];
+function ctxTokens(ql){return ql.split(/[^a-z0-9ñ]+/).filter(function(w){return w.length>=4&&CTX_STOP.indexOf(w)<0&&!/^\d{1,4}$/.test(w)&&!CTX_KW.some(function(k){return w.indexOf(k)>=0;});});}
+// Filas cuyo texto contiene algún término de la pregunta (se descartan términos demasiado genéricos)
+function ctxMatch(arr,txtFn,toks,max){
+  if(!toks.length) return [];
+  var txt=arr.map(function(r){return nr(txtFn(r));});
+  var hit={},lim=Math.max(5,Math.min(40,Math.ceil(arr.length*0.1)));
+  toks.forEach(function(w){
+    var idx=[];txt.forEach(function(t,i){if(t.indexOf(w)>=0)idx.push(i);});
+    if(idx.length&&idx.length<=lim) idx.forEach(function(i){hit[i]=1;});
+  });
+  return Object.keys(hit).map(Number).sort(function(a,b){return a-b;}).slice(0,max||40).map(function(i){return arr[i];});
+}
+
+function sysP(q){
+  var cur=(q||'');
+  if(!cur){var us=cH.filter(function(m){return m.role==='user';});cur=us.length?us[us.length-1].content:'';}
+  var base=sysPCtx(cur);
+  if(base.inc.length) return base.txt;
+  var us2=cH.filter(function(m){return m.role==='user'&&m.content!==cur;});
+  var repregunta=/^\s*(y|e|pero)\b|\b(eso|esos|esas|ese|esa|esto|ahi|anterior|mismo|misma|total|suma|detalle|cuales|cuantos|cuanto)\b/.test(nr(cur));
+  if(repregunta&&us2.length){var prev=sysPCtx(cur+' '+us2[us2.length-1].content);if(prev.inc.length) return prev.txt;}
+  return base.txt;
+}
+function sysPCtx(qtext){
+  var ctxQ=nr(qtext);
+  var kw=function(){return Array.prototype.some.call(arguments,function(w){return ctxQ.indexOf(w)>=0;});};
+  var toks=ctxTokens(ctxQ);
   var today=new Date().toLocaleDateString('es-AR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
-  var pAll=PENDIENTES.map(function(p){
+  var fmtPend=function(arr){return arr.map(function(p){
     var obj=(p.objeto||'').substring(0,60);
     var tram=(p.tramite||'').replace('PARA ','');
     var imp=p.importe_num>0?(p.moneda==='USD'?'USD '+p.importe_num.toLocaleString('es-AR',{maximumFractionDigits:0}):'$'+p.importe_num.toLocaleString('es-AR',{maximumFractionDigits:0})):'s/d';
     return '['+tram+'] '+obj+(p.proveedor?' | '+p.proveedor.substring(0,25):'')+(p.area?' | '+p.area.substring(0,25):'')+' | '+imp+(p.motivo?' | '+p.motivo:'');
-  }).join('\n');
+  }).join('\n');};
 
-  var rdpR=RDP.map(function(r){
+  var fmtRdp=function(arr){return arr.map(function(r){
     return (r.contratista||r.proveedor||'').substring(0,35)+'|'+(r.objeto||'').substring(0,40)+'|cuota '+r.cuota+'|'+fm(r.importe||0);
-  }).join('\n');
+  }).join('\n');};
 
-  var modosR=MODOS_EXPEDIENTES.slice(0,40).map(function(m){
+  var fmtModo=function(arr){return arr.map(function(m){
     return 'M'+m.m+'|'+m.e.replace(/-APN-[^|]*/,'')+'|'+(m.d||'').substring(0,45)+'|'+(m.s||'')+'|'+fm(m.i||0);
-  }).join('\n');
-  var modoIVR=MODO_IV.slice(0,20).map(function(m){
-    return 'MIV|'+m.e.replace(/-APN-[^|]*/,'')+'|'+(m.d||'').substring(0,45)+'|'+(m.s||'')+'|'+fm(m.i||0);
-  }).join('\n');
+  }).join('\n');};
 
   var legitPend=LEGITIMOS.filter(function(r){return r.ep!=='PAGADO';});
-  var legitR=legitPend.map(function(r){
+  var fmtLeg=function(arr){return arr.map(function(r){
     return r.p.substring(0,30)+'|'+r.o.substring(0,40)+'|'+r.ep+'|'+fm(r.a)+(r.m==='USD'?' USD':'')+'|'+r.per+'|'+r.ps+(r.obs?'|obs:'+r.obs.substring(0,40):'');
-  }).join('\n');
+  }).join('\n');};
 
   var legitPagTop={};
   LEGITIMOS.filter(function(r){return r.ep==='PAGADO'&&r.m==='ARS';}).forEach(function(r){
@@ -1453,11 +1480,11 @@ function sysP(){
   var pFirmar=PENDIENTES.filter(function(p){return p.tramite==='PARA FIRMAR DISPOSICION';}).length;
   var pLiberar=PENDIENTES.filter(function(p){return p.tramite==='PARA LIBERAR ORDEN DE COMPRA';}).length;
 
-  return 'Sos Rieli, el asistente virtual del Sistema de Gestion Administrativa de SOFSA (Operadora Ferroviaria). Hoy es '+today+'.'+
+  var base='Sos Rieli, el asistente virtual del Sistema de Gestion Administrativa de SOFSA (Operadora Ferroviaria). Hoy es '+today+'.'+
     ' El usuario es Maxi, Gerente General de SOFSA, hincha de Boca Juniors.'+
     ' Tu tono es profesional, cordial y cercano.'+
     ' REGLA NOTICIAS: Solo usa RESULTADOS WEB de este mensaje para info actualizada. Jamas inventes resultados, precios o noticias.'+
-    ' CONSULTAS INTERNAS: Cuando pregunten por proveedor, servicio u objeto, busca en TODOS los datasets y responde con todos los resultados indicando la seccion.'+
+    ' CONSULTAS INTERNAS: Abajo se incluyen solo las secciones relevantes para la pregunta y las coincidencias encontradas en todos los datasets (indic\u00e1 la secci\u00f3n de cada resultado). Si falta informaci\u00f3n de una secci\u00f3n no incluida, decilo y suger\u00ed repreguntar nombr\u00e1ndola (pendientes, RDP, modos, leg\u00edtimos abonos, adjudicados, cuotas).'+
     '\n\n=== RESUMEN SOFSA al '+today+' ==='+
     '\nTC BNA: $'+tc.toLocaleString('es-AR')+
     ' | Pendientes: '+PENDIENTES.length+' (Abrir:'+pAbrir+' Publicar:'+pPublicar+' Firmar:'+pFirmar+' Liberar OC:'+pLiberar+')'+
@@ -1466,17 +1493,36 @@ function sysP(){
     ' | Modos I-III: '+MODOS_EXPEDIENTES.length+' | Modo IV: '+MODO_IV.length+
     ' | Leg.Abonos: '+LEGITIMOS.length+' total ('+legitPend.length+' pend pago: $'+Math.round(totLP).toLocaleString('es-AR')+(totLPusd>0?' + USD '+Math.round(totLPusd).toLocaleString('es-AR'):'')+')'+
     ' | Impagos: '+nImp+' | No cont.: '+nNC+
-    ' | Cuotas 2026: Cr\u00e9dito '+fm(cuotasTot.credito)+' | Devengado '+fm(cuotasTot.devengado)+' ('+(cuotasTot.pctDev*100).toFixed(1)+'%) | Pagado '+fm(cuotasTot.pagado)+' ('+(cuotasTot.pctPag*100).toFixed(1)+'%)'+
-    '\n\n--- PENDIENTES COMPLETOS ('+PENDIENTES.length+') ---\n'+pAll+
-    '\n\n--- CONTRATOS RDP ('+RDP.length+') ---\n'+rdpR+
-    '\n\n--- MODOS I-III (muestra 40 de '+MODOS_EXPEDIENTES.length+') ---\n'+modosR+
-    '\n\n--- MODO IV (muestra 20 de '+MODO_IV.length+') ---\n'+modoIVR+
-    '\n\n--- LEG ABONOS NO PAGADOS ('+legitPend.length+') ---\n'+legitR+
-    '\n\n--- LEG ABONOS PAGADOS TOP PROVEEDORES ---\n'+legitPagR+
-    '\n\n--- ADJUDICADOS TOP PROVEEDOR/ANo ---\n'+adjR+
-    '\n\n--- CUOTAS 2026 POR FUENTE (Cr\u00e9dito/Devengado/Pagado/No Pagado) ---\n'+cuotasFuenteR+
-    '\n\n--- CUOTAS 2026 COMPARATIVO MENSUAL (Solicitado/Dev.Te\u00f3rico/Autorizado/Pagado/Deuda Exigible) ---\n'+cuotasMesR+
-    '\n\n--- CUOTAS 2026 DECISION GGA (teorico vs solicitado vs devengado vs pagado vs credito) ---\n'+cqResumenTexto();
+    ' | Cuotas 2026: Cr\u00e9dito '+fm(cuotasTot.credito)+' | Devengado '+fm(cuotasTot.devengado)+' ('+(cuotasTot.pctDev*100).toFixed(1)+'%) | Pagado '+fm(cuotasTot.pagado)+' ('+(cuotasTot.pctPag*100).toFixed(1)+'%)';
+  var sec=[],inc=[];
+  var add=function(nombre,titulo,cuerpo){if(cuerpo){sec.push('\n\n--- '+titulo+' ---\n'+cuerpo);if(inc.indexOf(nombre)<0)inc.push(nombre);}};
+  var mPend=ctxMatch(PENDIENTES,function(p){return [p.objeto,p.proveedor,p.area,p.expediente,p.motivo].join(' ');},toks);
+  if(mPend.length) add('pendientes','PENDIENTES QUE COINCIDEN ('+mPend.length+')',fmtPend(mPend));
+  else if(kw('pendient','abrir','publicar','firmar','liberar','orden de compra','tramite','emergencia','habitual','urgen','linea','roca','mitre','sarmiento','belgrano','san martin'))
+    add('pendientes','PENDIENTES COMPLETOS ('+PENDIENTES.length+')',fmtPend(PENDIENTES));
+  var mRdp=ctxMatch(RDP,function(r){return [r.contratista,r.proveedor,r.objeto,r.expediente].join(' ');},toks);
+  if(mRdp.length) add('rdp','RDP QUE COINCIDEN ('+mRdp.length+')',fmtRdp(mRdp));
+  else if(kw('rdp','redetermin')) add('rdp','CONTRATOS RDP ('+RDP.length+')',fmtRdp(RDP));
+  var modTxt=function(m){return [m.e,m.d,m.s,m.t].join(' ');};
+  var mMod=ctxMatch(MODOS_EXPEDIENTES,modTxt,toks),mIV=ctxMatch(MODO_IV,modTxt,toks);
+  if(!mMod.length&&!mIV.length&&kw('modo','contratacion','compra directa','expediente')){
+    add('modos','MODOS I-III (muestra 40 de '+MODOS_EXPEDIENTES.length+')',fmtModo(MODOS_EXPEDIENTES.slice(0,40)));
+    add('modos','MODO IV (muestra 20 de '+MODO_IV.length+')',fmtModo(MODO_IV.slice(0,20)));
+  }
+  if(mMod.length) add('modos','MODOS I-III QUE COINCIDEN ('+mMod.length+')',fmtModo(mMod));
+  if(mIV.length) add('modos','MODO IV QUE COINCIDEN ('+mIV.length+')',fmtModo(mIV));
+  var mLeg=ctxMatch(legitPend,function(r){return [r.p,r.o,r.e,r.c,r.gg,r.l,r.obs].join(' ');},toks);
+  if(mLeg.length) add('legitimos','LEG ABONOS NO PAGADOS QUE COINCIDEN ('+mLeg.length+')',fmtLeg(mLeg));
+  else if(kw('legitim','abono','impago','contabiliz')){
+    add('legitimos','LEG ABONOS NO PAGADOS ('+legitPend.length+')',fmtLeg(legitPend));
+    add('legitimos','LEG ABONOS PAGADOS TOP PROVEEDORES',legitPagR);
+  }
+  var mAdj=ctxMatch(ADJUDICADOS,function(r){return r.p;},toks,20);
+  if(!mAdj.length&&kw('adjudic','ranking','mayores proveedores','top proveedor')) add('adjudicados','ADJUDICADOS TOP PROVEEDOR/ANo',adjR);
+  else if(mAdj.length) add('adjudicados','ADJUDICADOS QUE COINCIDEN',mAdj.map(function(r){return r.p+'|'+r.y+'|Modo '+r.m+'|'+fm(r.a);}).join('\n'));
+  if(kw('cuota','presupuest','devengad','teoric','credito','deuda','sifer','fuente','decision','gga','solicitad','tesoro','ejecucion','pagado'))
+    add('cuotas','CUOTAS 2026 DECISION GGA (teorico vs solicitado vs devengado vs pagado vs credito)','POR FUENTE:\n'+cuotasFuenteR+'\nMENSUAL (Solicitado/Teorico/Devengado/Pagado/Deuda):\n'+cuotasMesR+'\n'+cqResumenTexto());
+  return {inc:inc,txt:base+'\nSECCIONES DE DETALLE INCLUIDAS: '+(inc.length?inc.join(', '):'ninguna (solo resumen)')+sec.join('')};
 }
 
 function mlx(item,key){
@@ -1677,10 +1723,10 @@ async function send(){
         webCtx=await webSearch(sq)||'';
       }
     }catch(eW){webCtx='';}
-    var sysProm=sysP();
+    var sysProm=sysP(text);
     if(webCtx) sysProm+='\n\nRESULTADOS WEB ACTUALES (cita las fuentes, incluí URLs y fechas en tu respuesta):\n'+webCtx;
     var msgs=[{role:'system',content:sysProm}];
-    cH.slice(-8).forEach(function(m){
+    cH.slice(-4).forEach(function(m){
       var r=m.role==='assistant'?'assistant':'user';
       var tx=typeof m.content==='string'?m.content:String(m.content||'');
       if(tx.trim()) msgs.push({role:r,content:tx});
@@ -1688,6 +1734,9 @@ async function send(){
     // ── Llamada principal: Claude Haiku via proxy ──
     var sysContent=sysProm;
     var userMsgs=msgs.filter(function(m){return m.role!=='system';});
+    // La API exige que la conversación empiece con un mensaje del usuario
+    while(userMsgs.length&&userMsgs[0].role!=='user') userMsgs.shift();
+    msgs=[msgs[0]].concat(userMsgs);
     var anthropicPayload={
       provider:'anthropic',
       model:'claude-haiku-4-5-20251001',
