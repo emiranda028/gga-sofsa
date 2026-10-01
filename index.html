@@ -213,7 +213,7 @@ a_{--a:#1a56db;--g:#057a55;--r:#c81e1e;--m:#6b7280;--b:#ebf5ff;--s:#fff;--s2:#f0
   #view-chat:not(.on){display:none!important;flex:0}
 
   /* ── Otros views activos: ocupan todo el espacio disponible en mobile ── */
-  #view-pend.on,#view-rdp.on,#view-modos.on,#view-tabla.on,#view-prov.on,#view-legit.on{flex:1;min-height:0;overflow-y:auto;display:flex!important;flex-direction:column}
+  #view-pend.on,#view-rdp.on,#view-modos.on,#view-tabla.on,#view-prov.on,#view-legit.on,#view-cuotas.on{flex:1;min-height:0;overflow-y:auto;display:flex!important;flex-direction:column}
 
   /* ── chatLayout: column flex filling view-chat ── */
   #chatLayout{flex-direction:column;flex:1;min-height:0;overflow:hidden;display:flex}
@@ -277,6 +277,154 @@ a_{--a:#1a56db;--g:#057a55;--r:#c81e1e;--m:#6b7280;--b:#ebf5ff;--s:#fff;--s2:#f0
 .msg.b .av{background:linear-gradient(135deg,#1a56db,#1e429f)!important;font-weight:800;letter-spacing:-.5px}
 .msg.b .av.rieli-svg{background:none!important;padding:0!important}
 .msg.u .av{background:#374151!important}
+
+/* ══════ Rediseño general ══════ */
+.hdr{background:linear-gradient(120deg,#0b1f4d 0%,#123a8c 55%,#1a56db 100%)!important;border-bottom:3px solid #f5c400}
+.tabs{background:#fff;box-shadow:0 1px 0 #e5e7eb}
+.tab{transition:color .15s,background .15s}
+.tab:hover{color:#1a56db;background:#f5f8ff}
+.tab.tab-gga{color:#0b1f4d;background:linear-gradient(180deg,#fff8d6,#fff)}
+.tab.tab-gga i{filter:saturate(1.2)}
+.tab.tab-gga .tab-badge{display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;background:#f5c400;color:#0b1f4d;font-size:8px;font-weight:800;vertical-align:1px;letter-spacing:.3px}
+.tab.tab-gga.on{background:#0b1f4d;color:#fff;border-bottom-color:#f5c400}
+
+/* ══════ Cuotas · Decisión GGA ══════ */
+.cq{background:#f0f2f6}
+.cq section{margin-bottom:12px}
+.cq-card{background:#fff;border:1px solid #e3e7ef;border-radius:14px;padding:14px 16px;box-shadow:0 1px 3px rgba(16,24,40,.05);margin-bottom:12px}
+.cq-muted{color:#6b7280;font-weight:500}
+.cq-sec-t{font-size:12px;font-weight:800;color:#111928;letter-spacing:.1px;margin-bottom:10px}
+.cq-eyebrow{font-size:10px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:#f5c400;font-family:'JetBrains Mono',monospace}
+.cq-eyebrow.dark{color:#1a56db}
+.cq-sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:0}
+.cq-sw-line{background:none!important;border-left:2px dashed #374151;width:2px;height:10px;border-radius:0}
+
+.cq-hero{background:radial-gradient(1200px 300px at 0% 0%,#1d4fbf 0%,#0b1f4d 60%);color:#fff;border-radius:18px;padding:18px 20px;box-shadow:0 8px 24px rgba(11,31,77,.25)}
+.cq-hero-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start}
+.cq-hero-big{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:4px}
+.cq-hero-big span{font-size:40px;font-weight:900;letter-spacing:-1.5px;line-height:1.05}
+.cq-hero-big small{font-size:13px;color:#ffd6d6;font-weight:600}
+.cq-hero-sub{font-size:11px;color:rgba(255,255,255,.75);margin-top:4px}
+.cq-hero-ctrl{display:flex;gap:10px;flex-wrap:wrap}
+.cq-hero-ctrl label{font-size:10px;color:rgba(255,255,255,.75);display:flex;flex-direction:column;gap:3px;font-weight:600}
+.cq-hero-ctrl select{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:5px 8px;font-family:'Outfit',sans-serif;font-size:12px;outline:none}
+.cq-hero-ctrl select option{color:#111928}
+.cq-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:14px 0}
+.cq-kpi{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:10px 12px}
+.cq-kpi-l{font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:inherit;opacity:.8}
+.cq-kpi-v{font-size:19px;font-weight:800;margin-top:3px;font-family:'JetBrains Mono',monospace;letter-spacing:-.5px}
+.cq-kpi-s{font-size:10.5px;opacity:.75;margin-top:2px}
+.cq-hero .cq-sec-t{color:#fff}
+.cq-hero .cq-muted{color:rgba(255,255,255,.6)}
+.cq-hero-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:12px}
+.cq-hs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cq-h{border-left:4px solid;border-radius:10px;padding:9px 11px;color:#111928;cursor:pointer;transition:transform .12s,box-shadow .12s}
+.cq-h:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.cq-h-top{display:flex;flex-direction:column;gap:2px}
+.cq-h-lvl{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.6px}
+.cq-h-t{font-size:12.5px;font-weight:800;line-height:1.3}
+.cq-h-x{font-size:11px;color:#374151;margin-top:4px;line-height:1.45}
+.cq-h-a{font-size:11px;color:#0b1f4d;font-weight:700;margin-top:5px}
+.cq-dec{background:#fff;color:#111928;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:6px;border-top:4px solid #f5c400}
+.cq-dec .cq-sec-t{color:#111928;margin-bottom:2px}
+.cq-dec select,.cq-dec textarea{width:100%;border:1px solid #c4cad8;border-radius:8px;padding:7px 9px;font-family:'Outfit',sans-serif;font-size:12px;outline:none;resize:vertical}
+.cq-dec select:focus,.cq-dec textarea:focus{border-color:#1a56db}
+.cq-btn{background:#0b1f4d;color:#fff;border:none;border-radius:8px;padding:8px 12px;font-weight:700;font-size:12px;cursor:pointer;font-family:'Outfit',sans-serif}
+.cq-btn:hover{background:#1a56db}
+.cq-dec-it{position:relative;border:1px solid #e5e7eb;border-radius:8px;padding:6px 26px 6px 8px;margin-bottom:5px;background:#f9fafb}
+.cq-dec-tag{font-size:9.5px;font-weight:800;color:#0b1f4d;background:#fff3bf;border-radius:6px;padding:1px 6px;margin-right:6px}
+.cq-dec-f{font-size:9.5px;color:#6b7280;font-family:'JetBrains Mono',monospace}
+.cq-dec-x{font-size:11.5px;margin-top:3px;white-space:pre-wrap}
+.cq-dec-del{position:absolute;top:4px;right:6px;border:none;background:none;color:#9ca3af;font-size:16px;cursor:pointer;line-height:1}
+.cq-dec-del:hover{color:#b42318}
+
+.cq-query{position:sticky;top:0;z-index:5;box-shadow:0 4px 14px rgba(16,24,40,.08)}
+.cq-q-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.cq-link{background:none;border:none;color:#1a56db;font-weight:700;font-size:11px;cursor:pointer}
+.cq-q-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:6px}
+.cq-q-l{font-size:9.5px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;width:58px;font-family:'JetBrains Mono',monospace}
+.cq-pill{border:1px solid #c4cad8;background:#fff;color:#374151;border-radius:20px;padding:5px 11px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif}
+.cq-pill.sm{font-size:10.5px;padding:4px 9px}
+.cq-pill:hover{border-color:#1a56db;color:#1a56db}
+.cq-pill.on{background:#1a56db;border-color:#1a56db;color:#fff}
+.cq-q-sel label{font-size:11px;color:#374151;font-weight:700;display:flex;align-items:center;gap:5px}
+.cq-q-sel select{border:1px solid #c4cad8;border-radius:8px;padding:5px 8px;font-size:12px;font-family:'Outfit',sans-serif;background:#fff;outline:none}
+.cq-q-sep{width:1px;height:22px;background:#e5e7eb;margin:0 4px}
+.cq-swap{border:1px solid #c4cad8;background:#fff;border-radius:8px;width:30px;height:28px;cursor:pointer;font-size:14px;color:#1a56db}
+
+.cq-cmp{border-top:4px solid #1a56db}
+.cq-cmp-t{font-size:17px;font-weight:800;margin-top:3px}
+.cq-cmp-nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0 6px}
+.cq-cmp-nums>div{background:#f8fafc;border:1px solid #eef0f3;border-radius:10px;padding:9px 11px}
+.cq-cmp-nums .cq-kpi-l{color:#6b7280;opacity:1}
+.cq-cmp-v{font-size:18px;font-weight:800;font-family:'JetBrains Mono',monospace;letter-spacing:-.5px;margin-top:2px}
+.cq-frase{font-size:12.5px;color:#374151;margin:6px 0}
+.cq-note{font-size:11px;background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:8px;padding:7px 10px;margin:6px 0}
+.cq-charts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.cq-ch-t{font-size:10.5px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.cq-ch{position:relative;height:240px}
+.cq-ch.tall{height:300px}
+.neg{color:#b42318!important}
+.pos{color:#067647}
+
+.cq-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid #eef0f3;border-radius:10px}
+.cq-tbl{width:100%;border-collapse:collapse;font-size:11.5px}
+.cq-tbl th{background:#f5f7fb;color:#374151;font-size:10px;text-transform:uppercase;letter-spacing:.3px;padding:7px 9px;text-align:right;white-space:nowrap;border-bottom:1px solid #e5e7eb;position:sticky;top:0}
+.cq-tbl th:first-child{text-align:left}
+.cq-tbl td{padding:6px 9px;border-bottom:1px solid #f0f2f5;white-space:nowrap}
+.cq-num td{text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px}
+.cq-tbl td.cq-l{text-align:left;font-family:'Outfit',sans-serif;font-weight:600;color:#111928;white-space:normal;min-width:120px}
+.cq-tbl tr:hover td{background:#fafbff}
+.cq-tot td{font-weight:800;background:#f5f7fb;border-top:2px solid #d8dde8}
+.cq-hl td{background:#fffbea}
+.cq-mx th{text-align:center}
+.cq-mx tbody th{text-align:left;background:#fafbfc;font-size:10.5px;text-transform:none;letter-spacing:0}
+.cq-mx-v{font-family:'JetBrains Mono',monospace;font-size:10px;color:#6b7280;font-weight:600;margin-top:2px}
+.cq-mx td{text-align:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:7px 8px}
+.cq-mx-c{cursor:pointer}
+.cq-mx-c:hover{background:#eef4ff!important}
+.cq-mx-c.on{background:#dbe7ff!important;outline:2px solid #1a56db;outline-offset:-2px}
+.cq-mx-r{color:#6b7280;font-size:10px;margin-top:1px}
+.cq-mx-d,.cq-mx-na{color:#c0c4cc}
+.cq-pb{display:flex;flex-direction:column;gap:2px}
+.cq-pb div{height:5px;border-radius:0 4px 4px 0;min-width:1px}
+.cq-legend{display:flex;gap:12px;font-size:10.5px;color:#374151;margin-bottom:8px;flex-wrap:wrap}
+.cq-fb{margin-bottom:12px}
+.cq-fb-h{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;gap:8px;flex-wrap:wrap}
+.cq-fb-h span{font-family:'JetBrains Mono',monospace;color:#6b7280;font-size:11px}
+.cq-fb-track{position:relative;height:18px;background:#f1f3f7;border-radius:6px}
+.cq-fb-dev{position:absolute;left:0;top:0;height:10px;background:#2a78d6;border-radius:0 4px 4px 0}
+.cq-fb-pag{position:absolute;left:0;bottom:0;height:6px;background:#1baf7a;border-radius:0 4px 4px 0}
+.cq-fb-teo{position:absolute;top:-3px;bottom:-3px;border-left:2px dashed #374151}
+.cq-fb-l{display:flex;gap:14px;font-size:10.5px;color:#374151;margin-top:4px;flex-wrap:wrap}
+.cq-glos{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:11.5px;color:#374151;line-height:1.5}
+
+/* Tarjeta Decisión GGA en Consolidado */
+.gga-card{background:radial-gradient(600px 200px at 0% 0%,#1d4fbf 0%,#0b1f4d 70%);color:#fff;border-radius:14px;padding:13px 15px;margin-bottom:8px;cursor:pointer;box-shadow:0 6px 18px rgba(11,31,77,.25);border-bottom:3px solid #f5c400}
+.gga-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.gga-big{font-size:28px;font-weight:900;letter-spacing:-1px;margin-top:2px}
+.gga-big small{font-size:11px;font-weight:600;color:#ffd6d6;letter-spacing:0}
+.gga-go{font-size:11px;font-weight:700;background:#f5c400;color:#0b1f4d;border-radius:20px;padding:4px 10px;white-space:nowrap}
+.gga-rows{display:grid;gap:5px;margin-top:8px}
+.gga-rows>div{display:grid;grid-template-columns:140px 1fr 52px;align-items:center;gap:8px;font-size:11px}
+.gga-rows b{text-align:right;font-family:'JetBrains Mono',monospace}
+.gga-bar{height:8px;background:rgba(255,255,255,.15);border-radius:4px;overflow:hidden}
+.gga-bar div{height:100%;border-radius:4px}
+.gga-alerts{margin-top:8px;font-size:11px;display:grid;gap:3px;background:rgba(255,255,255,.08);border-radius:8px;padding:6px 9px}
+
+@media (max-width:1100px){.cq-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.cq-hero-grid{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .tab.tab-gga .tab-badge{display:none}
+  .cq-kpis{grid-template-columns:1fr 1fr}
+  .cq-hs{grid-template-columns:1fr}
+  .cq-charts{grid-template-columns:1fr}
+  .cq-cmp-nums{grid-template-columns:1fr 1fr}
+  .cq-glos{grid-template-columns:1fr}
+  .cq-hero-big span{font-size:30px}
+  .cq-query{position:static}
+  .cq-q-l{width:100%}
+  .gga-rows>div{grid-template-columns:110px 1fr 48px}
+}
 </style>
 </head>
 <body>
@@ -347,13 +495,13 @@ setVH();window.addEventListener('resize',setVH);
 </div>
 <div class="tabs">
   <div class="tab on" data-tab="chat" onclick="goTab('chat')"><i>&#128172;</i>Consolidado</div>
+  <div class="tab tab-gga" data-tab="cuotas" onclick="goTab('cuotas')"><i>&#127919;</i>Decisi&#243;n GGA<span class="tab-badge">CUOTAS</span></div>
   <div class="tab" data-tab="pend" onclick="goTab('pend')"><i>&#128203;</i>Pendientes</div>
   <div class="tab" data-tab="rdp" onclick="goTab('rdp')"><i>&#128196;</i>RDP</div>
   <div class="tab" data-tab="modos" onclick="goTab('modos')"><i>&#128202;</i>Modos I-IV</div>
   <div class="tab" data-tab="tabla" onclick="goTab('tabla')"><i>&#128208;</i>Modos Cont.</div>
   <div class="tab" data-tab="prov" onclick="goTab('prov')"><i>&#127970;</i>Proveedores</div>
   <div class="tab" data-tab="legit" onclick="goTab('legit')"><i>&#128179;</i>Leg. Abonos</div>
-  <div class="tab" data-tab="cuotas" onclick="goTab('cuotas')"><i>&#128176;</i>Cuotas 2026</div>
 </div>
 
 <div id="trainBtn" onclick="scrollToTop()" title="Ir al inicio" style="position:fixed;right:0;top:55%;transform:translateY(-50%);width:38px;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);border:1px solid rgba(26,86,219,0.2);border-right:none;border-radius:12px 0 0 12px;padding:10px 7px;cursor:pointer;z-index:40;display:none;flex-direction:column;align-items:center;gap:5px;box-shadow:-3px 2px 12px rgba(0,0,0,0.12);transition:all .2s">
@@ -371,6 +519,7 @@ setVH();window.addEventListener('resize',setVH);
         <div style="font-size:15px;font-weight:700;margin-bottom:1px">&#128075; Hola Maxi, soy <span style="color:#fbbf24">Rieli</span></div>
         <div style="font-size:10px;opacity:.8;font-family:&quot;JetBrains Mono&quot;,monospace">Tu asistente virtual de gesti&#243;n administrativa</div>
       </div>
+      <div id="cGGA"></div>
       <!-- consolidado: compact on mobile (no donut) -->
       <div class="con" style="margin-bottom:8px;padding:13px 15px;border-top:3px solid #1a56db">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
@@ -409,6 +558,7 @@ setVH();window.addEventListener('resize',setVH);
       <div class="msgs" id="msgs"></div>
       <div class="chps">
         <div id="chpTrack" style="display:flex;gap:6px;animation:chipScroll 60s linear infinite;width:max-content"></div>
+        <div class="chp" onclick="chip(this)">Deuda exigible cuotas</div>
         <div class="chp" onclick="chip(this)">Para abrir expte</div>
         <div class="chp" onclick="chip(this)">Para publicar</div>
         <div class="chp" onclick="chip(this)">Para firmar</div>
@@ -593,12 +743,8 @@ setVH();window.addEventListener('resize',setVH);
   </div>
   <div id="legit-list" style="flex:1;overflow-y:auto;padding:0 10px 10px;min-height:300px"></div>
 </div>
-<div class="view" id="view-cuotas" style="flex-direction:column;overflow:auto">
-  <div id="cuotas-update" style="padding:10px 12px 0"></div>
-  <div id="cuotas-stats" style="display:flex;gap:10px;flex-wrap:wrap;padding:12px 12px 0"></div>
-  <div id="cuotas-fuente" style="padding:8px 12px 0"></div>
-  <div id="cuotas-mensual" style="padding:8px 12px 8px"></div>
-  <div id="cuotas-deuda" style="padding:0 12px 14px"></div>
+<div class="view" id="view-cuotas">
+  <div class="dv cq" id="cq-root"></div>
 </div>
 <div class="view" id="view-prov">
   <div class="dv">
@@ -1329,7 +1475,8 @@ function sysP(){
     '\n\n--- LEG ABONOS PAGADOS TOP PROVEEDORES ---\n'+legitPagR+
     '\n\n--- ADJUDICADOS TOP PROVEEDOR/ANo ---\n'+adjR+
     '\n\n--- CUOTAS 2026 POR FUENTE (Cr\u00e9dito/Devengado/Pagado/No Pagado) ---\n'+cuotasFuenteR+
-    '\n\n--- CUOTAS 2026 COMPARATIVO MENSUAL (Solicitado/Dev.Te\u00f3rico/Autorizado/Pagado/Deuda Exigible) ---\n'+cuotasMesR;
+    '\n\n--- CUOTAS 2026 COMPARATIVO MENSUAL (Solicitado/Dev.Te\u00f3rico/Autorizado/Pagado/Deuda Exigible) ---\n'+cuotasMesR+
+    '\n\n--- CUOTAS 2026 DECISION GGA (teorico vs solicitado vs devengado vs pagado vs credito) ---\n'+cqResumenTexto();
 }
 
 function mlx(item,key){
@@ -1359,11 +1506,12 @@ function sRep(q){
   if(has('como estas','como andas','que tal','hola','buenos dias','buenas tardes','buen dia')) return '¡Todo bien Maxi, gracias por preguntar! Soy Rieli, tu asistente de gestión administrativa. Listo para lo que necesites. ¿Consultamos expedientes, modos de contratación o algo más?';
   if(has('boca','juniors','xeneize','cabj')) return 'Boca es Boca 💙💛 Para las últimas novedades del Xeneize necesito conexión a internet activa. Cuando funcione te traigo todo. Mientras tanto, ¿te ayudo con algo de SOFSA?';
   if(has('rdp','en curso','redeterminacion')){var tr=cR(RDP);return 'RDP en curso: '+RDP_CUOTAS+' cuotas\n'+RDP.length+' contratos | '+RDP_EXPEDIENTES+' exp.\n'+fm(tr.a)+' ARS';}
-  if(has('cuotas 2026','cuota 2026','presupuesto','ejecucion presupuestaria','devengado','fuente 11','sifer')){
-    var ct=CUOTAS_FUENTE[CUOTAS_FUENTE.length-1];
-    return 'Cuotas 2026\nCr\u00e9dito total: '+fm(ct.credito)+'\nDevengado: '+fm(ct.devengado)+' ('+(ct.pctDev*100).toFixed(1)+'%)\nPagado: '+fm(ct.pagado)+' ('+(ct.pctPag*100).toFixed(1)+'%)\nNo pagado: '+fm(ct.noPagado)+
-      '\n\nPor fuente:\n'+CUOTAS_FUENTE.filter(function(f){return f.concepto!=='TOTAL';}).map(function(f){return '* '+f.concepto+': Dev. '+(f.pctDev*100).toFixed(1)+'% | Pag. '+(f.pctPag*100).toFixed(1)+'%';}).join('\n');
+  if(has('cuota','presupuesto','ejecucion presupuestaria','devengado','fuente 11','sifer','deuda exigible','teorico','decision gga','credito')){
+    var hh=cqHallazgos(),ct=hh.t;
+    return 'Cuotas 2026 \u00b7 Decisi\u00f3n GGA (datos al '+CQ_META.actualizado+')\nCr\u00e9dito: '+cqM(ct.cred,'M')+'\nTe\u00f3rico al corte: '+cqM(ct.teo,'M')+'\nSolicitado: '+cqM(ct.sol,'M')+'\nDevengado: '+cqM(ct.dev,'M')+' ('+cqPct(cqP(ct.dev,ct.cred))+' del cr\u00e9dito)\nPagado: '+cqM(ct.pag,'M')+' ('+cqPct(cqP(ct.pag,ct.dev))+' de lo devengado)\nDeuda exigible: '+cqM(ct.deuda,'M')+
+      '\n\nHallazgos:\n'+hh.list.map(function(x){return '* '+x.tit;}).join('\n')+'\n\nM\u00e1s detalle y comparaciones en la pesta\u00f1a Decisi\u00f3n GGA.';
   }
+
   if(has('emergencia ferroviaria','emergencia')){var ep=PENDIENTES.filter(function(x){return gt(x).l==='Emergencia';});return fmtP('Emergencia Ferroviaria',ep);}
   if(has('gasto habitual','habitual')){var hp=PENDIENTES.filter(function(x){return gt(x).l==='Gasto Habitual';});return fmtP('Gasto Habitual',hp);}
   if(has('leg abonos','legitimos abonos','legítimos abonos','abonos impagos','proveedores impagos','impago','impagos','no contabilizado','no contabilizados')){
@@ -2041,7 +2189,7 @@ document.addEventListener('DOMContentLoaded',function(){
   setInterval(fetchWeather, 10*60*1000); // refresh every 10 min
   // Build animated chip track
   (function(){
-    var qs=["¿Cómo estás?","¿Qué legítimos abonos están impagos?","¿Qué hay pendiente de Murata?","¿Cuál es el importe total pendiente de Leg. Abonos?","¿Qué expedientes de Modo IV están activos?","¿Cuántos impagos hay y por cuánto?","Novedades de Boca","¿Qué trámites hay para liberar OC?","¿Qué proveedores tienen leg. abonos impagos?","¿Cuántos expedientes hay por publicar?","¿Cuál es la cotización del dólar hoy?","¿Qué hay pendiente de Servisub?","¿Qué hay pendiente de seguridad?","¿Qué leg. abonos no están contabilizados?","¿Cuál es el resumen del consolidado?"];
+    var qs=["¿Cuál es la deuda exigible de cuotas?","¿Cómo viene el devengado vs el teórico?","¿Cómo estás?","¿Qué legítimos abonos están impagos?","¿Qué hay pendiente de Murata?","¿Cuál es el importe total pendiente de Leg. Abonos?","¿Qué expedientes de Modo IV están activos?","¿Cuántos impagos hay y por cuánto?","Novedades de Boca","¿Qué trámites hay para liberar OC?","¿Qué proveedores tienen leg. abonos impagos?","¿Cuántos expedientes hay por publicar?","¿Cuál es la cotización del dólar hoy?","¿Qué hay pendiente de Servisub?","¿Qué hay pendiente de seguridad?","¿Qué leg. abonos no están contabilizados?","¿Cuál es el resumen del consolidado?"];
     var track=document.getElementById('chpTrack');
     if(!track) return;
     // Duplicate for seamless loop
@@ -2071,8 +2219,544 @@ const LEGITIMOS=[{"i": "10/08/24", "e": "EX-2024-92504156- -APN-SG#SOFSE", "p": 
 var legitSearch='';
 function fLegit(v){legitSearch=v.toLowerCase();renderLegit();}
 
-const CUOTAS_MES=[{"mes": "ENERO", "sol": 144997222204.47, "devTeo": 116407073333.33, "aut": 80000000000, "pag": 80000000000, "deuda": 0, "diffD": -36407073333.33, "diffE": -36407073333.33}, {"mes": "FEBRERO", "sol": 157909806826.87, "devTeo": 116407073333.33, "aut": 80000000000.14, "pag": 80000000000, "deuda": 0.14, "diffD": -36407073333.19, "diffE": -36407073333.33}, {"mes": "MARZO", "sol": 147846720762.33, "devTeo": 116407073333.33, "aut": 78987498938, "pag": 78987498938, "deuda": 0, "diffD": -37419574395.33, "diffE": -37419574395.33}, {"mes": "ABRIL", "sol": 152411917640.34, "devTeo": 116407073333.33, "aut": 103267611054, "pag": 103267611054, "deuda": 0, "diffD": -13139462279.33, "diffE": -13139462279.33}, {"mes": "MAYO", "sol": 215980861321.39, "devTeo": 116407073333.33, "aut": 104353908125, "pag": 104353908125, "deuda": 0, "diffD": -12053165208.33, "diffE": -12053165208.33}, {"mes": "JUNIO", "sol": 195320059759.99, "devTeo": 116407073333.33, "aut": 131844890745, "pag": 125685181526, "deuda": 6159709219, "diffD": 15437817411.67, "diffE": 9278108192.67}, {"mes": "JULIO", "sol": 145064905343.33, "devTeo": 116407073333.33, "aut": 98311108674, "pag": 86565999164, "deuda": 11745109510, "diffD": -18095964659.33, "diffE": -29841074169.33}, {"mes": "AGOSTO", "sol": 140753796669.33, "devTeo": 116407073333.33, "aut": 94000000000, "pag": 67867267265, "deuda": 26132732735, "diffD": -22407073333.33, "diffE": -48539806068.33}, {"mes": "SEPTIEMBRE", "sol": 140753796669.33, "devTeo": 116407073333.33, "aut": 41649378212, "pag": 0, "deuda": 41649378212, "diffD": -74757695121.33, "diffE": -116407073333.33}, {"mes": "OCTUBRE", "sol": 0.0, "devTeo": 0, "aut": 0, "pag": 0, "deuda": 0, "diffD": 0, "diffE": null}, {"mes": "NOVIEMBRE", "sol": 0, "devTeo": 0, "aut": 0, "pag": 0, "deuda": 0, "diffD": 0, "diffE": null}, {"mes": "DICIEMBRE", "sol": 0, "devTeo": 0, "aut": 0, "pag": 0, "deuda": 0, "diffD": 0, "diffE": null}];
-const CUOTAS_FUENTE=[{"concepto": "FUENTE 11 - TESORO CORRIENTES", "credito": 1100000000000, "devengado": 691835109992.14, "pagado": 667257267747, "noPagado": 24577842245.14, "pctDev": 0.628941, "pctPag": 0.606598, "devTeoMensual": 91666666666.67, "devRealMensual": 76870567776.9}, {"concepto": "FUENTE 11 - TESORO CAPITAL", "credito": 203862000000, "devengado": 75543848212, "pagado": 32340290781, "noPagado": 43203557431, "pctDev": 0.370564, "pctPag": 0.158638, "devTeoMensual": 16988500000, "devRealMensual": 8393760912.44}, {"concepto": "SIFER CORRIENTE", "credito": 3307050000, "devengado": 20278657544, "pagado": 20278657544, "noPagado": 0, "pctDev": 6.131948, "pctPag": 6.131948, "devTeoMensual": 275587500, "devRealMensual": 2253184171.56}, {"concepto": "SIFER CAPITAL", "credito": 89715830000.0, "devengado": 24756780000, "pagado": 6851250000, "noPagado": 17905530000, "pctDev": 0.275947, "pctPag": 0.076366, "devTeoMensual": 7476319166.67, "devRealMensual": 2750753333.33}, {"concepto": "TOTAL", "credito": 1396884880000, "devengado": 812414395748.14, "pagado": 726727466072, "noPagado": 85686929676.14, "pctDev": 0.58159, "pctPag": 0.520249, "devTeoMensual": 116407073333.33, "devRealMensual": 90268266194.24}];
+// ═══════════ CUOTAS 2026 · DECISIÓN GGA ═══════════
+// Fuente: "GESTIÓN DE CUOTAS 01-10-26.xlsx" (Hoja1, Cuadro 2, Resumen Crédito mensual, Pagos 28-09)
+var CQ_META={
+  actualizado:'01/10/2026',
+  pagosAl:'28/09/2026',
+  archivo:'Gestión de Cuotas 01-10-26',
+  corte:9
+};
+var CQ_MESES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+var CQ_FUENTES=[
+  {id:'F11C',n:'Fuente 11 · Tesoro Corrientes',c:'FUENTE 11 - TESORO CORRIENTES',cred:1100000000000},
+  {id:'F11K',n:'Fuente 11 · Tesoro Capital',c:'FUENTE 11 - TESORO CAPITAL',cred:203862000000},
+  {id:'SIFC',n:'SIFER Corriente',c:'SIFER CORRIENTE',cred:3307050000},
+  {id:'SIFK',n:'SIFER Capital',c:'SIFER CAPITAL',cred:89715830000}
+];
+var CQ_PARTIDAS=[
+  {id:'CHS',f:'F11C',n:'Corrientes habituales · Sueldos'},
+  {id:'CHF',f:'F11C',n:'Corrientes habituales · Funcionamiento'},
+  {id:'CE',f:'F11C',n:'Corrientes · Emergencia'},
+  {id:'KH',f:'F11K',n:'Capital habituales'},
+  {id:'KE',f:'F11K',n:'Capital · Emergencia'},
+  {id:'SC',f:'SIFC',n:'SIFER corriente'},
+  {id:'SK',f:'SIFK',n:'SIFER capital'}
+];
+// [partida, mes, solicitado, devengado (autorizado), pagado]
+var CQ_ROWS=[["CHS",1,63400000000.0,58233200691.0,58233200691.0],["CHF",1,29830821992.14,21766799309.0,21766799309.0],["CHS",2,64400000000.0,62337106118.0,62337106118.0],["CHF",2,30667994406.56,17662893882.14,17662893882.0],["CHS",3,65600000000.0,62233380124.0,62233380124.0],["CHF",3,31424204255.22,16754118814.0,16754118814.0],["CHS",4,62511715568.96,60451106198.0,60451106198.0],["CHF",4,32011780810.0,32816504856.0,32816504856.0],["CHS",5,62548093923.13,63248609225.0,63248609225.0],["CHF",5,33129502008.0,14361390775.0,14361390775.0],["CHS",6,88901753374.21,88320296272.0,88320296272.0],["CHF",6,33510941258.0,18949703728.0,18949703728.0],["CHS",7,62890826188.01,75281225420.0,75281225420.0],["CHF",7,28160527265.08,8718774580.0,6973665070.0],["CHS",8,63650554499.67,67867267265.0,67867267265.0],["CHF",8,28065179381.29,16132732735.0,0],["CHS",9,64477603501.63,0,0],["CHF",9,27900008555.49,33469221269.0,0],["CHS",10,0,67090225275.0,0],["SC",5,7493908125.0,7493908125.0,7493908125.0],["SC",6,8473640745.0,8473640745.0,8473640745.0],["SC",7,4311108674.0,4311108674.0,4311108674.0],["KH",1,7595925205.92,0.0,0.0],["KH",2,7877786647.8,0.0,0.0],["KH",3,8045576963.37,0.0,0.0],["KH",4,8779062422.38,0.0,0.0],["KH",5,10253567641.26,0.0,0.0],["KH",6,11059889460.78,0.0,0.0],["KH",7,13836787274.94,0.0,0.0],["KH",8,13836787274.94,0,0],["KH",9,13836787274.94,0,0],["CE",1,27931477587.38,0.0,0.0],["CE",2,43357081546.88,0.0,0.0],["CE",3,30096147400.67,0.0,0.0],["CE",4,35747096704.0,0.0,0.0],["CE",5,91355712062.0,0.0,0.0],["CE",6,36488154161.0,0.0,0.0],["CE",7,11570276549.58,0.0,0.0],["CE",8,10905896121.7,0,0],["CE",9,10244017945.55,0,0],["KE",1,16238997419.04,0.0,0.0],["KE",2,11606944225.63,0.0,0.0],["KE",3,12680792143.06,0.0,0.0],["KE",4,13362262135.0,10000000000.0,10000000000.0],["KE",5,11200077562.0,19250000000.0,19250000000.0],["KE",6,10034430761.0,9250000000.0,3090290781.0],["KE",7,24295379391.73,10000000000.0,0],["KE",8,24295379391.73,10000000000.0,0],["KE",9,24295379391.73,17043848212.0,0],["SK",6,6851250000.0,6851250000.0,6851250000.0],["SK",9,0,17905530000.0,17905530000.0]];
+// Resumen crédito mensual del sector (millones de $) · dev/pag por mes
+var CQ_EMPRESAS=[{"n":"ADIF","cred":236032.0,"dev":[0,10776.19,22510.05,10300.0,20007.0,10980.0,12300.0,12070.0,13130.0,0,0,0],"pag":[0,1776.19,2740.29,12610.05,12300.0,12757.0,18730.0,22800.0,15459.71,0,0,0]},{"n":"Corredores Viales","cred":110000.0,"dev":[0.0,0,0,0,0,70900.0,0,0,0,0,0,0],"pag":[0.0,0.0,0,0,0,22138.79,24380.6,24380.6,0,0,0,0]},{"n":"Belgrano Cargas","cred":108530.0,"dev":[0,10680.0,12919.28,6968.0,8000.0,12758.0,7500.0,9075.0,2500.0,0,0,0],"pag":[0.0,5240.0,5440.0,12419.28,7468.0,8000.0,12000.0,9413.0,8920.0,0,0,0]},{"n":"DECAHF","cred":2177.0,"dev":[0,157.2,74.2,79.37,1288.72,80.0,0,166.34,0,0,0,0],"pag":[0,80.0,151.4,0,1287.77,80.33,80.0,83.24,83.1,0,0,0]},{"n":"FASE","cred":35418.0,"dev":[0,4520.0,2781.05,2600.0,3421.96,4380.0,0,7021.19,742.55,0,0,0],"pag":[0,2260.0,2260.0,2781.05,3021.96,3000.0,4380.0,3491.09,3630.1,0,0,0]},{"n":"Operador Ferroviario (SOFSA)","cred":1303862.0,"dev":[0,120570.31,118417.19,70451.11,129676.5,116520.0,18718.77,169281.23,50513.07,0,0,0],"pag":[0,58233.2,62337.11,62233.38,86536.18,97448.61,125320.3,110281.23,97207.56,0,0,0]}];
+
+// Medidas comparables
+var CQ_MED=[
+  {k:'cred',n:'Crédito autorizado',s:'Crédito',col:'#4a3aa7',d:'Crédito vigente anual (presupuesto autorizado 2026).'},
+  {k:'teo',n:'Teórico',s:'Teórico',col:'#8a8f98',d:'Devengado teórico: crédito / 12 por cada mes transcurrido hasta el corte.'},
+  {k:'sol',n:'Solicitado',s:'Solicitado',col:'#eb6834',d:'Cuota solicitada por SOFSA.'},
+  {k:'dev',n:'Devengado',s:'Devengado',col:'#2a78d6',d:'Cuota otorgada / autorizada por el Tesoro ("Autorizado (devengado)" del Excel).'},
+  {k:'pag',n:'Pagado',s:'Pagado',col:'#1baf7a',d:'Transferencia efectivamente pagada.'}
+];
+var CQ_DEUDA_COL='#e34948';
+
+var cqState={fuentes:['F11C','F11K','SIFC','SIFK'],partidas:CQ_PARTIDAS.map(function(p){return p.id;}),desde:1,hasta:12,corte:CQ_META.corte,a:'dev',b:'teo',unit:'M',preset:'todo'};
+var cqCharts={};
+
+function cqFuente(id){for(var i=0;i<CQ_FUENTES.length;i++){if(CQ_FUENTES[i].id===id)return CQ_FUENTES[i];}return null;}
+function cqPartida(id){for(var i=0;i<CQ_PARTIDAS.length;i++){if(CQ_PARTIDAS[i].id===id)return CQ_PARTIDAS[i];}return null;}
+function cqMed(k){for(var i=0;i<CQ_MED.length;i++){if(CQ_MED[i].k===k)return CQ_MED[i];}return {k:k,n:k,s:k,col:'#6b7280'};}
+
+// Agregación: devuelve meses[1..12] y totales para un estado de filtros
+function cqAgg(st){
+  st=st||cqState;
+  var parts=st.partidas.filter(function(p){var pp=cqPartida(p);return pp&&st.fuentes.indexOf(pp.f)>=0;});
+  var meses=[];for(var m=1;m<=12;m++)meses.push({m:m,mes:CQ_MESES[m-1],sol:0,dev:0,pag:0,teo:0,inPer:m>=st.desde&&m<=st.hasta});
+  CQ_ROWS.forEach(function(r){
+    if(parts.indexOf(r[0])<0)return;
+    var x=meses[r[1]-1];x.sol+=r[2];x.dev+=r[3];x.pag+=r[4];
+  });
+  // Crédito y teórico se asignan por fuente: sólo disponibles si la fuente está completa
+  var cred=0,parcial=false,fuentesSel=[];
+  st.fuentes.forEach(function(fid){
+    var all=CQ_PARTIDAS.filter(function(p){return p.f===fid;});
+    var sel=all.filter(function(p){return parts.indexOf(p.id)>=0;});
+    if(!sel.length)return;
+    fuentesSel.push(fid);
+    if(sel.length<all.length){parcial=true;return;}
+    var f=cqFuente(fid);cred+=f.cred;
+    meses.forEach(function(x){if(x.m<=st.corte)x.teo+=f.cred/12;});
+  });
+  if(parcial){cred=null;meses.forEach(function(x){x.teo=null;});}
+  var t={sol:0,dev:0,pag:0,teo:parcial?null:0,cred:cred,devCorte:0,pagCorte:0,solCorte:0,devPost:0,mesesCorte:0};
+  var acc={sol:0,dev:0,pag:0,teo:0};
+  meses.forEach(function(x){
+    x.deuda=x.dev-x.pag;
+    if(!x.inPer){x.acc=null;return;}
+    t.sol+=x.sol;t.dev+=x.dev;t.pag+=x.pag;if(!parcial)t.teo+=x.teo;
+    if(x.m<=st.corte){t.devCorte+=x.dev;t.pagCorte+=x.pag;t.solCorte+=x.sol;t.mesesCorte++;}else t.devPost+=x.dev;
+    acc.sol+=x.sol;acc.dev+=x.dev;acc.pag+=x.pag;acc.teo+=(x.teo||0);
+    x.acc={sol:acc.sol,dev:acc.dev,pag:acc.pag,teo:parcial?null:acc.teo};
+  });
+  t.deuda=t.dev-t.pag;
+  return {meses:meses,t:t,parcial:parcial,partidas:parts,fuentes:fuentesSel};
+}
+
+// ── formato ──
+function cqM(n,unit){
+  if(n===null||n===undefined||isNaN(n))return 'n/d';
+  unit=unit||cqState.unit;
+  if(unit==='M'){var v=n/1e6;return (v<0?'-':'')+'$'+Math.round(Math.abs(v)).toLocaleString('es-AR')+' M';}
+  return (n<0?'-':'')+'$'+Math.round(Math.abs(n)).toLocaleString('es-AR');
+}
+function cqS(n){if(n===null||n===undefined||isNaN(n))return 'n/d';return (n>0?'+':'')+cqM(n);}
+function cqP(a,b){if(a===null||b===null||a===undefined||b===undefined||!b)return null;return a/b;}
+function cqPct(x,dec){if(x===null||x===undefined||!isFinite(x))return 'n/d';return (x*100).toLocaleString('es-AR',{minimumFractionDigits:dec===undefined?1:dec,maximumFractionDigits:dec===undefined?1:dec})+'%';}
+function cqEsc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function cqVal(t,k){return k==='deuda'?t.deuda:t[k];}
+
+// ── Hallazgos para la decisión (calculados sobre el total SOFSA) ──
+function cqHallazgos(){
+  var st={fuentes:CQ_FUENTES.map(function(f){return f.id;}),partidas:CQ_PARTIDAS.map(function(p){return p.id;}),desde:1,hasta:12,corte:cqState.corte};
+  var g=cqAgg(st),t=g.t,H=[];
+  var corteN=CQ_MESES[st.corte-1];
+  // 1. Deuda exigible
+  var deudas=CQ_ROWS.map(function(r){return {p:r[0],m:r[1],d:r[3]-r[4]};}).filter(function(x){return x.d>1;}).sort(function(a,b){return b.d-a.d;});
+  if(t.deuda>1){
+    H.push({lvl:'crit',tit:'Deuda exigible: '+cqM(t.deuda)+' devengados sin pagar',
+      txt:'Equivale al '+cqPct(cqP(t.deuda,t.dev))+' del devengado. Principales saldos: '+deudas.slice(0,4).map(function(x){return cqPartida(x.p).n+' ('+CQ_MESES[x.m-1]+') '+cqM(x.d);}).join(' · ')+'.',
+      acc:'Priorizar el pago de los saldos devengados más antiguos.',q:{preset:'deuda'}});
+  }
+  // 2. Devengado vs teórico al corte
+  var gapDev=t.devCorte-t.teo;
+  H.push({lvl:gapDev<0?(cqP(t.devCorte,t.teo)<0.85?'serious':'warn'):'good',tit:'Devengado vs teórico a '+corteN+': '+cqPct(cqP(t.devCorte,t.teo)),
+    txt:'Se devengaron '+cqM(t.devCorte)+' contra un teórico de '+cqM(t.teo)+' (brecha '+cqS(gapDev)+').'+(t.devPost>0?' Además hay '+cqM(t.devPost)+' ya devengados de meses posteriores al corte.':''),
+    acc:gapDev<0?'Gestionar ante el Tesoro la cuota no otorgada respecto del teórico.':'Ritmo de devengamiento en línea con el teórico.',q:{a:'dev',b:'teo'}});
+  // 3. Pagado vs teórico
+  var gapPag=t.pagCorte-t.teo;
+  H.push({lvl:gapPag<0?'serious':'good',tit:'Pagado vs teórico a '+corteN+': '+cqPct(cqP(t.pagCorte,t.teo)),
+    txt:'Pagado '+cqM(t.pagCorte)+' vs teórico '+cqM(t.teo)+' (brecha '+cqS(gapPag)+').',acc:'',q:{a:'pag',b:'teo'}});
+  // 4. Solicitado vs otorgado
+  H.push({lvl:'warn',tit:'Otorgado vs solicitado: '+cqPct(cqP(t.dev,t.sol)),
+    txt:'De '+cqM(t.sol)+' solicitados se devengaron '+cqM(t.dev)+'. No otorgado: '+cqM(t.sol-t.dev)+'.',acc:'',q:{a:'dev',b:'sol'}});
+  // 5. Partidas con solicitado y cero devengado
+  CQ_PARTIDAS.forEach(function(p){
+    var s=0,d=0;CQ_ROWS.forEach(function(r){if(r[0]===p.id){s+=r[2];d+=r[3];}});
+    if(s>0&&d===0) H.push({lvl:'serious',tit:p.n+': sin cuota otorgada',txt:'Se solicitaron '+cqM(s)+' y no se devengó nada en el año.',acc:'Reclamar la asignación o reprogramar las necesidades de la partida.',q:{fuentes:[p.f],partidas:[p.id],a:'dev',b:'sol'}});
+  });
+  // 6. Ejecución por fuente vs tiempo transcurrido
+  var tiempo=st.corte/12;
+  CQ_FUENTES.forEach(function(f){
+    var gf=cqAgg({fuentes:[f.id],partidas:st.partidas,desde:1,hasta:12,corte:st.corte}).t;
+    var e=cqP(gf.dev,f.cred);
+    if(e>1) H.push({lvl:'crit',tit:f.n+': devengado supera el crédito ('+cqPct(e)+')',txt:'Devengado '+cqM(gf.dev)+' sobre crédito '+cqM(f.cred)+' (exceso '+cqM(gf.dev-f.cred)+').',acc:'Requiere adecuación / modificación presupuestaria del crédito.',q:{fuentes:[f.id],a:'dev',b:'cred'}});
+    else if(e<tiempo*0.6) H.push({lvl:'warn',tit:f.n+': subejecución ('+cqPct(e)+' del crédito)',txt:'Transcurrido el '+cqPct(tiempo,0)+' del año. Pagado: '+cqPct(cqP(gf.pag,f.cred))+' del crédito. Saldo sin devengar '+cqM(f.cred-gf.dev)+'.',acc:'Revisar programación de cuotas o reasignar crédito.',q:{fuentes:[f.id],a:'dev',b:'cred'}});
+  });
+  // 7. Proyección de cierre
+  var prom=t.mesesCorte?t.devCorte/t.mesesCorte:0, proy=prom*12;
+  H.push({lvl:proy<t.cred*0.9?'info':'good',tit:'Proyección al cierre: '+cqPct(cqP(proy,t.cred))+' del crédito',
+    txt:'Al ritmo promedio de '+cqM(prom)+'/mes el año cerraría con '+cqM(proy)+' devengados. Para ejecutar todo el crédito harían falta '+cqM((t.cred-t.dev)/Math.max(1,12-st.corte))+' por mes en los '+(12-st.corte)+' meses restantes.',acc:'',q:{a:'dev',b:'cred'}});
+  return {list:H,t:t};
+}
+
+var CQ_LVL={crit:{c:'#b42318',bg:'#fef3f2',i:'&#9940;',l:'Crítico'},serious:{c:'#c2410c',bg:'#fff4ed',i:'&#9888;&#65039;',l:'Alto'},warn:{c:'#a16207',bg:'#fefbe8',i:'&#9888;&#65039;',l:'Atención'},good:{c:'#067647',bg:'#ecfdf3',i:'&#9989;',l:'OK'},info:{c:'#1e40af',bg:'#eff6ff',i:'&#8505;&#65039;',l:'Info'}};
+
+// ── Registro de decisiones (se guarda en este navegador) ──
+function cqDecLoad(){try{return JSON.parse(localStorage.getItem('gga_decisiones_cuotas')||'[]');}catch(e){return [];}}
+function cqDecSave(a){try{localStorage.setItem('gga_decisiones_cuotas',JSON.stringify(a));}catch(e){}}
+function cqDecAdd(){
+  var tx=document.getElementById('cqDecTxt'),tp=document.getElementById('cqDecTipo');
+  if(!tx||!tx.value.trim())return;
+  var a=cqDecLoad();a.unshift({f:new Date().toLocaleString('es-AR',{dateStyle:'short',timeStyle:'short'}),t:tp.value,x:tx.value.trim()});
+  cqDecSave(a.slice(0,50));tx.value='';cqRenderDec();
+}
+function cqDecDel(i){var a=cqDecLoad();a.splice(i,1);cqDecSave(a);cqRenderDec();}
+function cqRenderDec(){
+  var el=document.getElementById('cqDecList');if(!el)return;
+  var a=cqDecLoad();
+  el.innerHTML=a.length?a.slice(0,6).map(function(d,i){
+    return '<div class="cq-dec-it"><div><span class="cq-dec-tag">'+cqEsc(d.t)+'</span><span class="cq-dec-f">'+cqEsc(d.f)+'</span></div><div class="cq-dec-x">'+cqEsc(d.x)+'</div><button class="cq-dec-del" title="Eliminar" onclick="cqDecDel('+i+')">&times;</button></div>';
+  }).join(''):'<div class="cq-muted" style="font-size:11px">Todavía no hay decisiones registradas en este dispositivo.</div>';
+}
+
+// ── Consulta: presets y filtros ──
+var CQ_PRESETS=[
+  {id:'todo',n:'Todo SOFSA',s:{}},
+  {id:'deuda',n:'Deuda exigible',s:{a:'dev',b:'pag'}},
+  {id:'f11c',n:'Tesoro corrientes',s:{fuentes:['F11C']}},
+  {id:'sueldos',n:'Sueldos',s:{fuentes:['F11C'],partidas:['CHS'],a:'dev',b:'sol'}},
+  {id:'capital',n:'Capital (F11 + SIFER)',s:{fuentes:['F11K','SIFK']}},
+  {id:'emerg',n:'Emergencia',s:{fuentes:['F11C','F11K'],partidas:['CE','KE'],a:'dev',b:'sol'}},
+  {id:'sifer',n:'SIFER',s:{fuentes:['SIFC','SIFK'],a:'dev',b:'cred'}},
+  {id:'trim',n:'Último trimestre',s:{desde:7,hasta:9}},
+  {id:'ytd',n:'Año al corte',s:{desde:1,hasta:CQ_META.corte}}
+];
+function cqReset(){cqState.fuentes=CQ_FUENTES.map(function(f){return f.id;});cqState.partidas=CQ_PARTIDAS.map(function(p){return p.id;});cqState.desde=1;cqState.hasta=12;cqState.a='dev';cqState.b='teo';}
+function cqPreset(id){
+  var p=CQ_PRESETS.filter(function(x){return x.id===id;})[0];if(!p)return;
+  cqReset();
+  Object.keys(p.s).forEach(function(k){cqState[k]=Array.isArray(p.s[k])?p.s[k].slice():p.s[k];});
+  if(p.s.fuentes&&!p.s.partidas)cqState.partidas=CQ_PARTIDAS.filter(function(x){return p.s.fuentes.indexOf(x.f)>=0;}).map(function(x){return x.id;});
+  cqState.preset=id;cqRenderQuery();
+}
+function cqApplyQ(q){
+  cqReset();
+  if(q.preset)return cqPreset(q.preset);
+  Object.keys(q).forEach(function(k){cqState[k]=Array.isArray(q[k])?q[k].slice():q[k];});
+  if(q.fuentes&&!q.partidas)cqState.partidas=CQ_PARTIDAS.filter(function(x){return q.fuentes.indexOf(x.f)>=0;}).map(function(x){return x.id;});
+  cqState.preset='';cqRenderQuery();
+  var el=document.getElementById('cqConsulta');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function cqToggleF(id){
+  var i=cqState.fuentes.indexOf(id);
+  var ps=CQ_PARTIDAS.filter(function(p){return p.f===id;}).map(function(p){return p.id;});
+  if(i>=0){if(cqState.fuentes.length===1)return;cqState.fuentes.splice(i,1);cqState.partidas=cqState.partidas.filter(function(p){return ps.indexOf(p)<0;});}
+  else{cqState.fuentes.push(id);ps.forEach(function(p){if(cqState.partidas.indexOf(p)<0)cqState.partidas.push(p);});}
+  cqState.preset='';cqRenderQuery();
+}
+function cqToggleP(id){
+  var p=cqPartida(id),i=cqState.partidas.indexOf(id);
+  if(i>=0){
+    var rest=cqState.partidas.filter(function(x){return x!==id;});
+    if(!rest.length)return;
+    cqState.partidas=rest;
+    if(!rest.some(function(x){return cqPartida(x).f===p.f;}))cqState.fuentes=cqState.fuentes.filter(function(f){return f!==p.f;});
+  } else {cqState.partidas.push(id);if(cqState.fuentes.indexOf(p.f)<0)cqState.fuentes.push(p.f);}
+  cqState.preset='';cqRenderQuery();
+}
+function cqSet(k,v){
+  if(k==='desde'||k==='hasta'||k==='corte')v=parseInt(v,10);
+  cqState[k]=v;
+  if(k==='desde'&&cqState.hasta<v)cqState.hasta=v;
+  if(k==='hasta'&&cqState.desde>v)cqState.desde=v;
+  if(k!=='a'&&k!=='b'&&k!=='unit')cqState.preset='';
+  if(k==='corte'||k==='unit'){cqRenderHero();cqRenderEmpresas();}
+  cqRenderQuery();
+}
+function cqSwap(){var a=cqState.a;cqState.a=cqState.b;cqState.b=a;cqRenderQuery();}
+
+// ── Render principal ──
+function renderCuotas(){
+  var root=document.getElementById('cq-root');if(!root)return;
+  if(!root.dataset.built){
+    root.innerHTML=
+      '<section id="cqHero" class="cq-hero"></section>'+
+      '<section id="cqConsulta" class="cq-card cq-query"></section>'+
+      '<section id="cqResult"></section>'+
+      '<section class="cq-card" id="cqEmpresas"></section>'+
+      '<section class="cq-card" id="cqGlosario"></section>';
+    root.dataset.built='1';
+  }
+  cqRenderHero();
+  cqRenderQuery();
+  cqRenderEmpresas();
+  cqRenderGlosario();
+}
+
+function cqRenderHero(){
+  var h=cqHallazgos(),t=h.t,el=document.getElementById('cqHero');if(!el)return;
+  var corteN=CQ_MESES[cqState.corte-1];
+  var kpi=function(lbl,v,sub,col){return '<div class="cq-kpi"><div class="cq-kpi-l"><span class="cq-sw" style="background:'+col+'"></span>'+lbl+'</div><div class="cq-kpi-v">'+v+'</div><div class="cq-kpi-s">'+sub+'</div></div>';};
+  var lv=function(x){var L=CQ_LVL[x.lvl];return '<div class="cq-h" style="border-left-color:'+L.c+';background:'+L.bg+'" onclick=\'cqApplyQ('+JSON.stringify(x.q||{})+')\' title="Ver en la consulta">'+
+    '<div class="cq-h-top"><span class="cq-h-lvl" style="color:'+L.c+'">'+L.i+' '+L.l+'</span><span class="cq-h-t">'+x.tit+'</span></div>'+
+    '<div class="cq-h-x">'+x.txt+'</div>'+(x.acc?'<div class="cq-h-a">&#10148; '+x.acc+'</div>':'')+'</div>';};
+  var tipos=['Priorizar pago','Gestionar ampliación de cuota','Solicitar modificación presupuestaria','Reprogramar solicitud','Reasignar crédito','Seguimiento / sin acción'];
+  el.innerHTML=
+    '<div class="cq-hero-top">'+
+      '<div><div class="cq-eyebrow">Decisión GGA · Gestión de Cuotas 2026</div>'+
+      '<div class="cq-hero-big"><span>'+cqM(t.deuda)+'</span><small>deuda exigible (devengado sin pagar)</small></div>'+
+      '<div class="cq-hero-sub">Corte teórico: <b>'+corteN+'</b> ('+cqState.corte+'/12) · Datos al <b>'+CQ_META.actualizado+'</b> · pagos al '+CQ_META.pagosAl+'</div></div>'+
+      '<div class="cq-hero-ctrl"><label>Unidad <select onchange="cqSet(\'unit\',this.value)"><option value="M"'+(cqState.unit==='M'?' selected':'')+'>Millones</option><option value="P"'+(cqState.unit==='P'?' selected':'')+'>Pesos</option></select></label>'+
+      '<label>Corte teórico <select onchange="cqSet(\'corte\',this.value)">'+CQ_MESES.map(function(m,i){return '<option value="'+(i+1)+'"'+(cqState.corte===i+1?' selected':'')+'>'+m+'</option>';}).join('')+'</select></label></div>'+
+    '</div>'+
+    '<div class="cq-kpis">'+
+      kpi('Crédito autorizado',cqM(t.cred),'presupuesto vigente 2026','#4a3aa7')+
+      kpi('Teórico al corte',cqM(t.teo),cqPct(cqP(t.teo,t.cred))+' del crédito','#8a8f98')+
+      kpi('Solicitado',cqM(t.sol),cqPct(cqP(t.sol,t.cred))+' del crédito','#eb6834')+
+      kpi('Devengado',cqM(t.dev),cqPct(cqP(t.dev,t.cred))+' del crédito · '+cqPct(cqP(t.dev,t.sol))+' de lo solicitado','#2a78d6')+
+      kpi('Pagado',cqM(t.pag),cqPct(cqP(t.pag,t.cred))+' del crédito · '+cqPct(cqP(t.pag,t.dev))+' de lo devengado','#1baf7a')+
+    '</div>'+
+    '<div class="cq-hero-grid">'+
+      '<div><div class="cq-sec-t">Hallazgos para la decisión <span class="cq-muted">· clic para analizar</span></div><div class="cq-hs">'+h.list.map(lv).join('')+'</div></div>'+
+      '<div class="cq-dec"><div class="cq-sec-t">&#9997;&#65039; Registro de decisión GGA</div>'+
+        '<select id="cqDecTipo">'+tipos.map(function(x){return '<option>'+x+'</option>';}).join('')+'</select>'+
+        '<textarea id="cqDecTxt" rows="3" placeholder="Ej.: Priorizar pago de Capital Emergencia julio-septiembre; gestionar ampliación de cuota F11 corrientes por la brecha vs teórico..."></textarea>'+
+        '<button class="cq-btn" onclick="cqDecAdd()">Registrar decisión</button>'+
+        '<div class="cq-muted" style="font-size:9.5px;margin:4px 0 8px">Se guarda en este navegador.</div>'+
+        '<div id="cqDecList"></div></div>'+
+    '</div>';
+  cqRenderDec();
+}
+
+function cqRenderQuery(){
+  var el=document.getElementById('cqConsulta');if(!el)return;
+  var opt=function(k,v){return CQ_MESES.map(function(m,i){return '<option value="'+(i+1)+'"'+(v===i+1?' selected':'')+'>'+m+'</option>';}).join('');};
+  var medOpt=function(sel){return CQ_MED.concat([{k:'deuda',n:'Deuda exigible'}]).map(function(m){return '<option value="'+m.k+'"'+(sel===m.k?' selected':'')+'>'+m.n+'</option>';}).join('');};
+  el.innerHTML=
+    '<div class="cq-q-head"><div class="cq-sec-t" style="margin:0">&#128269; Consulta de cuotas</div><button class="cq-link" onclick="cqPreset(\'todo\')">Restablecer</button></div>'+
+    '<div class="cq-q-row"><span class="cq-q-l">Rápidas</span>'+CQ_PRESETS.map(function(p){return '<button class="cq-pill'+(cqState.preset===p.id?' on':'')+'" onclick="cqPreset(\''+p.id+'\')">'+p.n+'</button>';}).join('')+'</div>'+
+    '<div class="cq-q-row"><span class="cq-q-l">Fuente</span>'+CQ_FUENTES.map(function(f){return '<button class="cq-pill'+(cqState.fuentes.indexOf(f.id)>=0?' on':'')+'" onclick="cqToggleF(\''+f.id+'\')">'+f.n+'</button>';}).join('')+'</div>'+
+    '<div class="cq-q-row"><span class="cq-q-l">Partida</span>'+CQ_PARTIDAS.map(function(p){return '<button class="cq-pill sm'+(cqState.partidas.indexOf(p.id)>=0?' on':'')+'" onclick="cqToggleP(\''+p.id+'\')">'+p.n+'</button>';}).join('')+'</div>'+
+    '<div class="cq-q-row cq-q-sel">'+
+      '<label>Desde <select onchange="cqSet(\'desde\',this.value)">'+opt('desde',cqState.desde)+'</select></label>'+
+      '<label>Hasta <select onchange="cqSet(\'hasta\',this.value)">'+opt('hasta',cqState.hasta)+'</select></label>'+
+      '<span class="cq-q-sep"></span>'+
+      '<label>Comparar <select onchange="cqSet(\'a\',this.value)">'+medOpt(cqState.a)+'</select></label>'+
+      '<button class="cq-swap" onclick="cqSwap()" title="Invertir">&#8646;</button>'+
+      '<label>vs <select onchange="cqSet(\'b\',this.value)">'+medOpt(cqState.b)+'</select></label>'+
+    '</div>';
+  cqRenderResult();
+}
+
+function cqRenderResult(){
+  var el=document.getElementById('cqResult');if(!el)return;
+  var g=cqAgg(),t=g.t,st=cqState;
+  var A=cqMed(st.a),B=cqMed(st.b);
+  if(st.a==='deuda')A={k:'deuda',n:'Deuda exigible',col:CQ_DEUDA_COL};
+  if(st.b==='deuda')B={k:'deuda',n:'Deuda exigible',col:CQ_DEUDA_COL};
+  var va=cqVal(t,st.a),vb=cqVal(t,st.b);
+  var diff=(va===null||vb===null)?null:va-vb, ratio=cqP(va,vb);
+  var per=CQ_MESES[st.desde-1]+(st.desde!==st.hasta?' a '+CQ_MESES[st.hasta-1]:'');
+  var scope=g.partidas.length===CQ_PARTIDAS.length?'Total SOFSA':g.partidas.map(function(p){return cqPartida(p).n;}).join(', ');
+  var nota=g.parcial?'<div class="cq-note">&#8505;&#65039; El crédito y el teórico se asignan por <b>fuente</b>: con partidas sueltas no pueden calcularse. Seleccioná la fuente completa para compararlos.</div>':'';
+  var teoNote=(st.hasta>st.corte&&!g.parcial)?' · teórico computado hasta '+CQ_MESES[st.corte-1]:'';
+  var frase='';
+  if(diff!==null){
+    frase=A.n+' '+(diff<0?'está <b>'+cqM(-diff)+' por debajo</b> de':'supera en <b>'+cqM(diff)+'</b> a')+' '+B.n.toLowerCase()+(ratio!==null?' ('+cqPct(ratio)+' de '+B.n.toLowerCase()+')':'')+'.';
+  }
+
+  // Matriz de comparaciones: todas las combinaciones
+  var meds=CQ_MED.concat([{k:'deuda',n:'Deuda exigible',s:'Deuda exig.',col:CQ_DEUDA_COL}]);
+  var mx='<div class="cq-scroll"><table class="cq-tbl cq-mx"><thead><tr><th>A \\ B</th>'+meds.map(function(m){return '<th><span class="cq-sw" style="background:'+m.col+'"></span>'+m.s+'</th>';}).join('')+'</tr></thead><tbody>';
+  var pairs=[];
+  meds.forEach(function(a){
+    mx+='<tr><th><span class="cq-sw" style="background:'+a.col+'"></span>'+a.s+'<div class="cq-mx-v">'+cqM(cqVal(t,a.k))+'</div></th>';
+    meds.forEach(function(b){
+      if(a.k===b.k){mx+='<td class="cq-mx-d">—</td>';return;}
+      var x=cqVal(t,a.k),y=cqVal(t,b.k);
+      if(x===null||y===null){mx+='<td class="cq-mx-na">n/d</td>';return;}
+      var d=x-y,r=cqP(x,y);
+      var on=(a.k===st.a&&b.k===st.b)?' on':'';
+      mx+='<td class="cq-mx-c'+on+'" onclick="cqState.a=\''+a.k+'\';cqState.b=\''+b.k+'\';cqRenderQuery()" title="'+a.n+' − '+b.n+'"><div class="'+(d<0?'neg':'pos')+'">'+cqS(d)+'</div><div class="cq-mx-r">'+cqPct(r)+'</div></td>';
+      if(meds.indexOf(a)<meds.indexOf(b))pairs.push({A:a.n,B:b.n,a:x,b:y,dif:d,pct:r,pctInv:cqP(y,x)});
+    });
+    mx+='</tr>';
+  });
+  mx+='</tbody></table></div>';
+
+  // Tabla mensual con todas las diferencias
+  var mes=g.meses.filter(function(x){return x.inPer;});
+  var rowsM=mes.map(function(x){
+    var teo=x.teo;
+    return {mes:x.mes,teo:teo,sol:x.sol,dev:x.dev,pag:x.pag,deuda:x.deuda,
+      devTeo:teo===null?null:x.dev-teo,pagTeo:teo===null?null:x.pag-teo,solTeo:teo===null?null:x.sol-teo,
+      devSol:x.dev-x.sol,pagSol:x.pag-x.sol,pagDev:x.pag-x.dev,
+      pctDevSol:cqP(x.dev,x.sol),pctPagDev:cqP(x.pag,x.dev),pctDevTeo:cqP(x.dev,teo),pctPagTeo:cqP(x.pag,teo),
+      accTeo:x.acc.teo,accDev:x.acc.dev,accPag:x.acc.pag,accDevTeo:x.acc.teo===null?null:x.acc.dev-x.acc.teo,accPagTeo:x.acc.teo===null?null:x.acc.pag-x.acc.teo,accDeuda:x.acc.dev-x.acc.pag};
+  });
+  var tot={mes:'TOTAL',teo:t.teo,sol:t.sol,dev:t.dev,pag:t.pag,deuda:t.deuda,devTeo:t.teo===null?null:t.dev-t.teo,pagTeo:t.teo===null?null:t.pag-t.teo,solTeo:t.teo===null?null:t.sol-t.teo,devSol:t.dev-t.sol,pagSol:t.pag-t.sol,pagDev:t.pag-t.dev,pctDevSol:cqP(t.dev,t.sol),pctPagDev:cqP(t.pag,t.dev),pctDevTeo:cqP(t.dev,t.teo),pctPagTeo:cqP(t.pag,t.teo)};
+  window.EXPORT_DATA.cuotasMes=rowsM.concat([tot]);
+  var colsM=[['mes','Mes'],['teo','Teórico'],['sol','Solicitado'],['dev','Devengado'],['pag','Pagado'],['deuda','Deuda exig.'],['devTeo','Dev − Teór.'],['pagTeo','Pag − Teór.'],['solTeo','Sol − Teór.'],['devSol','Dev − Sol'],['pagSol','Pag − Sol'],['pctDevSol','% Dev/Sol'],['pctPagDev','% Pag/Dev'],['pctDevTeo','% Dev/Teór.'],['pctPagTeo','% Pag/Teór.'],['accDevTeo','Acum. Dev − Teór.'],['accPagTeo','Acum. Pag − Teór.'],['accDeuda','Acum. deuda']];
+  var SIGNED=['devTeo','pagTeo','solTeo','devSol','pagSol','pagDev','accDevTeo','accPagTeo'];
+  var cell=function(k,v){
+    if(k==='mes')return '<td class="cq-l">'+v+'</td>';
+    if(k.indexOf('pct')===0)return '<td>'+cqPct(v)+'</td>';
+    if(v===undefined)return '<td></td>';
+    if(SIGNED.indexOf(k)>=0)return '<td class="'+(v<0?'neg':'pos')+'">'+cqS(v)+'</td>';
+    if((k==='deuda'||k==='accDeuda')&&v>1)return '<td class="neg">'+cqM(v)+'</td>';
+    return '<td>'+cqM(v)+'</td>';
+  };
+  var tm='<div class="cq-scroll"><table class="cq-tbl cq-num"><thead><tr>'+colsM.map(function(c){return '<th>'+c[1]+'</th>';}).join('')+'</tr></thead><tbody>'+
+    rowsM.map(function(r){return '<tr>'+colsM.map(function(c){return cell(c[0],r[c[0]]);}).join('')+'</tr>';}).join('')+
+    '<tr class="cq-tot">'+colsM.map(function(c){return cell(c[0],tot[c[0]]);}).join('')+'</tr></tbody></table></div>';
+
+  // Por fuente
+  var fRows=CQ_FUENTES.filter(function(f){return g.fuentes.indexOf(f.id)>=0;}).map(function(f){
+    var gf=cqAgg({fuentes:[f.id],partidas:st.partidas,desde:st.desde,hasta:st.hasta,corte:st.corte}),x=gf.t;
+    var mesesRest=Math.max(1,12-st.corte);
+    return {concepto:f.n,credito:x.cred,teo:x.teo,sol:x.sol,devengado:x.dev,pagado:x.pag,noPagado:x.deuda,saldo:x.cred===null?null:x.cred-x.dev,
+      pctDev:cqP(x.dev,x.cred),pctPag:cqP(x.pag,x.cred),pctDevTeo:cqP(x.devCorte,x.teo),pctPagTeo:cqP(x.pagCorte,x.teo),pctDevSol:cqP(x.dev,x.sol),pctPagDev:cqP(x.pag,x.dev),
+      devTeoMensual:x.cred===null?null:x.cred/12,devRealMensual:x.mesesCorte?x.devCorte/x.mesesCorte:0,
+      proy:x.mesesCorte?x.devCorte/x.mesesCorte*12:0,necesario:x.cred===null?null:(x.cred-x.dev)/mesesRest};
+  });
+  window.EXPORT_DATA.cuotasFuente=fRows;
+  var colsF=[['concepto','Fuente'],['credito','Crédito'],['teo','Teórico'],['sol','Solicitado'],['devengado','Devengado'],['pagado','Pagado'],['noPagado','Deuda exig.'],['saldo','Saldo crédito'],['pctDev','% Dev/Créd.'],['pctPag','% Pag/Créd.'],['pctDevTeo','% Dev/Teór.'],['pctPagTeo','% Pag/Teór.'],['pctDevSol','% Dev/Sol'],['pctPagDev','% Pag/Dev'],['devRealMensual','Dev. prom. mensual'],['proy','Proyección cierre'],['necesario','Necesario/mes restante']];
+  var cellF=function(k,v){if(k==='concepto')return '<td class="cq-l">'+v+'</td>';if(k.indexOf('pct')===0)return '<td'+(v>1&&(k==='pctDev'||k==='pctPag')?' class="neg"':'')+'>'+cqPct(v)+'</td>';return '<td'+(k==='noPagado'&&v>1?' class="neg"':'')+'>'+cqM(v)+'</td>';};
+  var tf='<div class="cq-scroll"><table class="cq-tbl cq-num"><thead><tr>'+colsF.map(function(c){return '<th>'+c[1]+'</th>';}).join('')+'</tr></thead><tbody>'+
+    fRows.map(function(r){return '<tr>'+colsF.map(function(c){return cellF(c[0],r[c[0]]);}).join('')+'</tr>';}).join('')+'</tbody></table></div>';
+  var fBars=fRows.map(function(r){
+    if(r.credito===null)return '';
+    var w=function(v){return Math.max(0,Math.min(100,v*100));};
+    var over=r.pctDev>1;
+    return '<div class="cq-fb"><div class="cq-fb-h"><b>'+r.concepto+'</b><span>Crédito '+cqM(r.credito)+'</span></div>'+
+      '<div class="cq-fb-track"><div class="cq-fb-dev" style="width:'+w(r.pctDev)+'%"></div><div class="cq-fb-pag" style="width:'+w(r.pctPag)+'%"></div><div class="cq-fb-teo" style="left:'+w(st.corte/12)+'%" title="Teórico al corte"></div></div>'+
+      '<div class="cq-fb-l"><span><span class="cq-sw" style="background:#2a78d6"></span>Devengado '+cqPct(r.pctDev)+(over?' &#9940; excede crédito':'')+'</span><span><span class="cq-sw" style="background:#1baf7a"></span>Pagado '+cqPct(r.pctPag)+'</span><span><span class="cq-sw cq-sw-line"></span>Teórico '+cqPct(st.corte/12,0)+'</span></div></div>';
+  }).join('');
+
+  // Por partida
+  var pRows=g.partidas.map(function(pid){
+    var p=cqPartida(pid),s=0,d=0,pg=0;
+    CQ_ROWS.forEach(function(r){if(r[0]===pid&&r[1]>=st.desde&&r[1]<=st.hasta){s+=r[2];d+=r[3];pg+=r[4];}});
+    return {partida:p.n,fuente:cqFuente(p.f).n,sol:s,dev:d,pag:pg,deuda:d-pg,devSol:d-s,pagSol:pg-s,pctDevSol:cqP(d,s),pctPagDev:cqP(pg,d),pctPagSol:cqP(pg,s)};
+  });
+  window.EXPORT_DATA.cuotasPartida=pRows;
+  var maxP=Math.max.apply(null,pRows.map(function(r){return Math.max(r.sol,r.dev);}).concat([1]));
+  var tp='<div class="cq-scroll"><table class="cq-tbl cq-num"><thead><tr><th>Partida</th><th>Solicitado / Devengado / Pagado</th><th>Solicitado</th><th>Devengado</th><th>Pagado</th><th>Deuda exig.</th><th>Dev − Sol</th><th>% Dev/Sol</th><th>% Pag/Dev</th><th>% Pag/Sol</th></tr></thead><tbody>'+
+    pRows.map(function(r){
+      var bw=function(v){return (v/maxP*100).toFixed(1);};
+      return '<tr><td class="cq-l">'+r.partida+'<div class="cq-muted" style="font-size:9.5px">'+r.fuente+'</div></td>'+
+        '<td style="min-width:160px"><div class="cq-pb"><div style="width:'+bw(r.sol)+'%;background:#eb6834"></div><div style="width:'+bw(r.dev)+'%;background:#2a78d6"></div><div style="width:'+bw(r.pag)+'%;background:#1baf7a"></div></div></td>'+
+        '<td>'+cqM(r.sol)+'</td><td>'+cqM(r.dev)+'</td><td>'+cqM(r.pag)+'</td><td'+(r.deuda>1?' class="neg"':'')+'>'+cqM(r.deuda)+'</td><td class="'+(r.devSol<0?'neg':'pos')+'">'+cqS(r.devSol)+'</td><td>'+cqPct(r.pctDevSol)+'</td><td>'+cqPct(r.pctPagDev)+'</td><td>'+cqPct(r.pctPagSol)+'</td></tr>';
+    }).join('')+'</tbody></table></div>';
+
+  // Deuda exigible detallada (partida x mes)
+  var deudaRows=CQ_ROWS.filter(function(r){return g.partidas.indexOf(r[0])>=0&&r[1]>=st.desde&&r[1]<=st.hasta&&r[3]-r[4]>1;})
+    .map(function(r){return {partida:cqPartida(r[0]).n,mes:CQ_MESES[r[1]-1],m:r[1],dev:r[3],pag:r[4],deuda:r[3]-r[4],pct:cqP(r[4],r[3])};})
+    .sort(function(a,b){return a.m-b.m;});
+  window.EXPORT_DATA.cuotasDeuda=deudaRows;
+  var td=deudaRows.length?'<div class="cq-scroll"><table class="cq-tbl cq-num"><thead><tr><th>Mes</th><th>Partida</th><th>Devengado</th><th>Pagado</th><th>Deuda exigible</th><th>% pagado</th></tr></thead><tbody>'+
+    deudaRows.map(function(r){return '<tr><td class="cq-l">'+r.mes+'</td><td class="cq-l">'+r.partida+'</td><td>'+cqM(r.dev)+'</td><td>'+cqM(r.pag)+'</td><td class="neg">'+cqM(r.deuda)+'</td><td>'+cqPct(r.pct)+'</td></tr>';}).join('')+
+    '<tr class="cq-tot"><td class="cq-l" colspan="4">Total deuda exigible</td><td class="neg">'+cqM(deudaRows.reduce(function(s,r){return s+r.deuda;},0))+'</td><td></td></tr></tbody></table></div>':'<div class="cq-muted" style="font-size:12px">Sin deuda exigible en la selección.</div>';
+
+  window.EXPORT_DATA.cuotasMatriz=pairs;
+
+  el.innerHTML=
+    '<div class="cq-card cq-cmp">'+
+      '<div class="cq-cmp-h"><div><div class="cq-eyebrow dark">Resultado · '+cqEsc(scope)+' · '+per+teoNote+'</div>'+
+      '<div class="cq-cmp-t"><span class="cq-sw" style="background:'+A.col+'"></span>'+A.n+' <span class="cq-muted">vs</span> <span class="cq-sw" style="background:'+B.col+'"></span>'+B.n+'</div></div></div>'+
+      '<div class="cq-cmp-nums">'+
+        '<div><div class="cq-kpi-l">'+A.n+'</div><div class="cq-cmp-v">'+cqM(va)+'</div></div>'+
+        '<div><div class="cq-kpi-l">'+B.n+'</div><div class="cq-cmp-v">'+cqM(vb)+'</div></div>'+
+        '<div><div class="cq-kpi-l">Diferencia (A − B)</div><div class="cq-cmp-v '+(diff<0?'neg':'pos')+'">'+cqS(diff)+'</div></div>'+
+        '<div><div class="cq-kpi-l">A / B</div><div class="cq-cmp-v">'+cqPct(ratio)+'</div></div>'+
+      '</div>'+(frase?'<div class="cq-frase">'+frase+'</div>':'')+nota+
+      '<div class="cq-charts"><div><div class="cq-ch-t">Mensual · '+A.n+' vs '+B.n+'</div><div class="cq-ch"><canvas id="cqChPair"></canvas></div></div>'+
+      '<div><div class="cq-ch-t">Acumulado · '+A.n+' vs '+B.n+'</div><div class="cq-ch"><canvas id="cqChAcc"></canvas></div></div></div>'+
+    '</div>'+
+    '<div class="cq-card"><div class="cq-sec-t">&#129518; Matriz de comparaciones · todas las combinaciones <span class="cq-muted">(fila − columna · % = fila / columna · clic para graficar)</span></div>'+exportBar('cuotasMatriz')+mx+'</div>'+
+    '<div class="cq-card"><div class="cq-sec-t">&#128200; Evolución mensual · teórico, solicitado, devengado y pagado</div><div class="cq-ch tall"><canvas id="cqChAll"></canvas></div>'+
+      '<div class="cq-sec-t" style="margin-top:14px">&#128181; Deuda exigible por mes (devengado − pagado)</div><div class="cq-ch"><canvas id="cqChDeuda"></canvas></div></div>'+
+    '<div class="cq-card"><div class="cq-sec-t">&#128197; Detalle mensual con todas las diferencias</div>'+exportBar('cuotasMes')+tm+'</div>'+
+    '<div class="cq-card"><div class="cq-sec-t">&#127974; Ejecución por fuente</div>'+exportBar('cuotasFuente')+fBars+tf+'</div>'+
+    '<div class="cq-card"><div class="cq-sec-t">&#128203; Por partida</div>'+exportBar('cuotasPartida')+'<div class="cq-legend"><span><span class="cq-sw" style="background:#eb6834"></span>Solicitado</span><span><span class="cq-sw" style="background:#2a78d6"></span>Devengado</span><span><span class="cq-sw" style="background:#1baf7a"></span>Pagado</span></div>'+tp+'</div>'+
+    '<div class="cq-card"><div class="cq-sec-t">&#9888;&#65039; Deuda exigible por partida y mes</div>'+exportBar('cuotasDeuda')+td+'</div>';
+
+  cqDrawCharts(g,A,B);
+}
+
+function cqChart(id,cfg){
+  if(typeof Chart==='undefined')return;
+  if(cqCharts[id]){cqCharts[id].destroy();delete cqCharts[id];}
+  var c=document.getElementById(id);if(!c)return;
+  cqCharts[id]=new Chart(c,cfg);
+}
+function cqBaseOpts(stacked){
+  return {responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{position:'top',align:'start',labels:{boxWidth:10,boxHeight:10,font:{size:11,family:'Outfit'},color:'#374151'}},
+      tooltip:{callbacks:{label:function(c){return ' '+c.dataset.label+': '+(c.raw===null?'n/d':cqM(c.raw));}}}},
+    scales:{x:{grid:{display:false},ticks:{font:{size:10},color:'#6b7280'}},
+      y:{beginAtZero:true,grid:{color:'#eef0f3'},border:{display:false},ticks:{font:{size:10},color:'#6b7280',callback:function(v){return '$'+(v/1e9).toLocaleString('es-AR')+' MM';}}}}};
+}
+function cqDrawCharts(g,A,B){
+  var mes=g.meses.filter(function(x){return x.inPer;});
+  var labels=mes.map(function(x){return x.mes.substring(0,3);});
+  var get=function(x,k){if(k==='teo'&&x.m>cqState.corte)return null;return k==='deuda'?x.deuda:(k==='cred'?(g.t.cred===null?null:g.t.cred/12):x[k]);};
+  var ds=function(M,k,type){
+    var isTeo=k==='teo'||k==='cred';
+    return {label:M.n,data:mes.map(function(x){return get(x,k);}),backgroundColor:M.col,borderColor:M.col,type:isTeo?'line':'bar',
+      borderDash:isTeo?[6,4]:undefined,borderWidth:isTeo?2:0,pointRadius:isTeo?0:undefined,borderRadius:4,borderSkipped:'bottom',categoryPercentage:0.7,barPercentage:0.9,order:isTeo?0:1};
+  };
+  var pairOpts=cqBaseOpts();
+  if(A.k==='cred'||B.k==='cred')pairOpts.plugins.subtitle={display:true,text:'Crédito expresado como 1/12 mensual',font:{size:10},color:'#6b7280'};
+  cqChart('cqChPair',{type:'bar',data:{labels:labels,datasets:[ds(A,A.k),ds(B,B.k)]},options:pairOpts});
+  var accK=function(x,k){
+    if(!x.acc)return null;
+    if(k==='deuda')return x.acc.dev-x.acc.pag;
+    if(k==='cred')return g.t.cred;
+    if(k==='teo'&&x.m>cqState.corte)return null;
+    return x.acc[k];
+  };
+  var lds=function(M,k){return {label:M.n+(k==='cred'?' (anual)':' acumulado'),data:mes.map(function(x){return accK(x,k);}),borderColor:M.col,backgroundColor:M.col,borderWidth:2,pointRadius:3,pointHoverRadius:5,tension:0.2,borderDash:(k==='teo'||k==='cred')?[6,4]:undefined};};
+  cqChart('cqChAcc',{type:'line',data:{labels:labels,datasets:[lds(A,A.k),lds(B,B.k)]},options:cqBaseOpts()});
+  var all=['sol','dev','pag'].map(function(k){return ds(cqMed(k),k);});
+  if(!g.parcial)all.unshift(ds(cqMed('teo'),'teo'));
+  cqChart('cqChAll',{type:'bar',data:{labels:labels,datasets:all},options:cqBaseOpts()});
+  cqChart('cqChDeuda',{type:'bar',data:{labels:labels,datasets:[{label:'Deuda exigible',data:mes.map(function(x){return x.deuda;}),backgroundColor:CQ_DEUDA_COL,borderRadius:4,borderSkipped:'bottom',categoryPercentage:0.6}]},
+    options:(function(){var o=cqBaseOpts();o.plugins.legend={display:false};return o;})()});
+}
+
+function cqRenderEmpresas(){
+  var el=document.getElementById('cqEmpresas');if(!el)return;
+  var rows=CQ_EMPRESAS.map(function(e){
+    var d=e.dev.reduce(function(s,v){return s+v;},0),p=e.pag.reduce(function(s,v){return s+v;},0);
+    return {empresa:e.n,credito:e.cred*1e6,devengado:d*1e6,pagado:p*1e6,deuda:(d-p)*1e6,pctDev:cqP(d,e.cred),pctPag:cqP(p,e.cred),pctPagDev:cqP(p,d),saldo:(e.cred-d)*1e6};
+  });
+  var T=rows.reduce(function(s,r){['credito','devengado','pagado','deuda','saldo'].forEach(function(k){s[k]+=r[k];});return s;},{empresa:'Total sector',credito:0,devengado:0,pagado:0,deuda:0,saldo:0});
+  T.pctDev=cqP(T.devengado,T.credito);T.pctPag=cqP(T.pagado,T.credito);T.pctPagDev=cqP(T.pagado,T.devengado);
+  window.EXPORT_DATA.cuotasEmpresas=rows.concat([T]);
+  var tr=function(r,tot){return '<tr'+(tot?' class="cq-tot"':(r.empresa.indexOf('SOFSA')>=0?' class="cq-hl"':''))+'><td class="cq-l">'+r.empresa+'</td><td>'+cqM(r.credito)+'</td><td>'+cqM(r.devengado)+'</td><td>'+cqM(r.pagado)+'</td><td'+(r.deuda>1?' class="neg"':'')+'>'+cqM(r.deuda)+'</td><td>'+cqM(r.saldo)+'</td><td>'+cqPct(r.pctDev)+'</td><td>'+cqPct(r.pctPag)+'</td><td>'+cqPct(r.pctPagDev)+'</td></tr>';};
+  el.innerHTML='<div class="cq-sec-t">&#128646; Contexto sector ferroviario · Resumen de crédito mensual <span class="cq-muted">(actualizado '+CQ_META.pagosAl+')</span></div>'+
+    exportBar('cuotasEmpresas')+
+    '<div class="cq-scroll"><table class="cq-tbl cq-num"><thead><tr><th>Empresa</th><th>Crédito vigente</th><th>Devengado</th><th>Pagado</th><th>Deuda exig.</th><th>Saldo crédito</th><th>% Dev/Créd.</th><th>% Pag/Créd.</th><th>% Pag/Dev</th></tr></thead><tbody>'+
+    rows.map(function(r){return tr(r);}).join('')+tr(T,true)+'</tbody></table></div>'+
+    '<div class="cq-ch-t" style="margin-top:12px">Pagos mensuales por empresa (reporte de pagos)</div><div class="cq-ch tall"><canvas id="cqChEmp"></canvas></div>'+
+    '<div class="cq-muted" style="font-size:10px;margin-top:6px">Este cuadro proviene del reporte sectorial y usa su propio criterio de imputación mensual; puede no coincidir exactamente con el cuadro de cuotas de SOFSA.</div>';
+  var cols=['#2a78d6','#eb6834','#1baf7a','#eda100','#e87ba4','#4a3aa7'];
+  var meses=[];for(var i=0;i<12;i++){if(CQ_EMPRESAS.some(function(e){return e.pag[i]||e.dev[i];}))meses.push(i);}
+  var o=cqBaseOpts();o.scales.x.stacked=true;o.scales.y.stacked=true;
+  cqChart('cqChEmp',{type:'bar',data:{labels:meses.map(function(i){return CQ_MESES[i].substring(0,3);}),
+    datasets:CQ_EMPRESAS.map(function(e,j){return {label:e.n,data:meses.map(function(i){return e.pag[i]*1e6;}),backgroundColor:cols[j],borderColor:'#fff',borderWidth:1,categoryPercentage:0.6};})},options:o});
+}
+
+function cqRenderGlosario(){
+  var el=document.getElementById('cqGlosario');if(!el)return;
+  el.innerHTML='<div class="cq-sec-t">&#128214; Cómo leer los conceptos</div><div class="cq-glos">'+
+    CQ_MED.map(function(m){return '<div><span class="cq-sw" style="background:'+m.col+'"></span><b>'+m.n+'</b> — '+m.d+'</div>';}).join('')+
+    '<div><span class="cq-sw" style="background:'+CQ_DEUDA_COL+'"></span><b>Deuda exigible</b> — Devengado − Pagado: cuota otorgada pendiente de transferencia.</div>'+
+    '<div><span class="cq-sw" style="background:#9ca3af"></span><b>Saldo de crédito</b> — Crédito − Devengado: presupuesto todavía no utilizado.</div>'+
+    '<div><span class="cq-sw" style="background:#9ca3af"></span><b>Proyección de cierre</b> — Devengado promedio mensual hasta el corte × 12.</div>'+
+    '</div><div class="cq-muted" style="font-size:10px;margin-top:8px">Fuente: '+CQ_META.archivo+' (Hoja1, Cuadro 2, Resumen Crédito mensual y Pagos al '+CQ_META.pagosAl+').</div>';
+}
+
+// ── Compatibilidad: estructuras usadas por Rieli (chat) ──
+var CUOTAS_MES=(function(){
+  var g=cqAgg({fuentes:CQ_FUENTES.map(function(f){return f.id;}),partidas:CQ_PARTIDAS.map(function(p){return p.id;}),desde:1,hasta:12,corte:CQ_META.corte});
+  return g.meses.map(function(x){return {mes:x.mes.toUpperCase(),sol:x.sol,devTeo:x.teo,aut:x.dev,pag:x.pag,deuda:x.deuda,diffD:x.dev-x.teo,diffE:x.pag-x.teo};});
+})();
+var CUOTAS_FUENTE=(function(){
+  var all=CQ_PARTIDAS.map(function(p){return p.id;});
+  var out=CQ_FUENTES.map(function(f){
+    var x=cqAgg({fuentes:[f.id],partidas:all,desde:1,hasta:12,corte:CQ_META.corte}).t;
+    return {concepto:f.c,credito:f.cred,devengado:x.dev,pagado:x.pag,noPagado:x.deuda,pctDev:x.dev/f.cred,pctPag:x.pag/f.cred,devTeoMensual:f.cred/12,devRealMensual:x.mesesCorte?x.devCorte/x.mesesCorte:0};
+  });
+  var t=cqAgg({fuentes:CQ_FUENTES.map(function(f){return f.id;}),partidas:all,desde:1,hasta:12,corte:CQ_META.corte}).t;
+  out.push({concepto:'TOTAL',credito:t.cred,devengado:t.dev,pagado:t.pag,noPagado:t.deuda,pctDev:t.dev/t.cred,pctPag:t.pag/t.cred,devTeoMensual:t.cred/12,devRealMensual:t.devCorte/t.mesesCorte});
+  return out;
+})();
+function cqResumenTexto(){
+  var h=cqHallazgos(),t=h.t;
+  var partidas=CQ_PARTIDAS.map(function(p){var s=0,d=0,pg=0;CQ_ROWS.forEach(function(r){if(r[0]===p.id){s+=r[2];d+=r[3];pg+=r[4];}});return p.n+'|Sol:'+cqM(s,'M')+'|Dev:'+cqM(d,'M')+'|Pag:'+cqM(pg,'M')+'|Deuda:'+cqM(d-pg,'M');}).join('\n');
+  var deudas=CQ_ROWS.filter(function(r){return r[3]-r[4]>1;}).map(function(r){return CQ_MESES[r[1]-1]+' '+cqPartida(r[0]).n+': '+cqM(r[3]-r[4],'M');}).join('\n');
+  return 'Datos al '+CQ_META.actualizado+' (pagos al '+CQ_META.pagosAl+'), teórico al corte de '+CQ_MESES[cqState.corte-1]+
+    '\nTotales: Crédito '+cqM(t.cred,'M')+' | Teórico '+cqM(t.teo,'M')+' | Solicitado '+cqM(t.sol,'M')+' | Devengado '+cqM(t.dev,'M')+' | Pagado '+cqM(t.pag,'M')+' | Deuda exigible '+cqM(t.deuda,'M')+
+    '\nHallazgos: '+h.list.map(function(x){return '['+CQ_LVL[x.lvl].l+'] '+x.tit.replace(/<[^>]+>/g,'')+' - '+x.txt+(x.acc?' Acción: '+x.acc:'');}).join('\n')+
+    '\nPor partida:\n'+partidas+'\nDeuda exigible detallada:\n'+deudas;
+}
+
+// Tarjeta "Decisión GGA" en el Consolidado
+function renderGGACard(){
+  var el=document.getElementById('cGGA');if(!el)return;
+  var h=cqHallazgos(),t=h.t,top=h.list.filter(function(x){return x.lvl==='crit'||x.lvl==='serious';}).slice(0,3);
+  var bar=function(v,col){return '<div class="gga-bar"><div style="width:'+Math.min(100,(v||0)*100).toFixed(1)+'%;background:'+col+'"></div></div>';};
+  el.innerHTML='<div class="gga-card" onclick="goTab(\'cuotas\')">'+
+    '<div class="gga-top"><div><div class="cq-eyebrow">Decisión GGA · Cuotas 2026</div><div class="gga-big">'+cqM(t.deuda,'M')+' <small>deuda exigible</small></div></div><div class="gga-go">Abrir tablero &#10140;</div></div>'+
+    '<div class="gga-rows">'+
+      '<div><span>Devengado / teórico</span>'+bar(cqP(t.devCorte,t.teo),'#7cb4ff')+'<b>'+cqPct(cqP(t.devCorte,t.teo))+'</b></div>'+
+      '<div><span>Pagado / devengado</span>'+bar(cqP(t.pag,t.dev),'#5fd3a6')+'<b>'+cqPct(cqP(t.pag,t.dev))+'</b></div>'+
+      '<div><span>Devengado / solicitado</span>'+bar(cqP(t.dev,t.sol),'#ffb08a')+'<b>'+cqPct(cqP(t.dev,t.sol))+'</b></div>'+
+    '</div>'+
+    (top.length?'<div class="gga-alerts">'+top.map(function(x){return '<div>'+CQ_LVL[x.lvl].i+' '+x.tit+'</div>';}).join('')+'</div>':'')+
+  '</div>';
+}
+
 
 function renderLegit(){
   var estado=document.getElementById('legitEstado').value;
@@ -2206,8 +2890,12 @@ var EXPORT_LABELS={
   tabla:{title:'Modos Continuación',cols:{modo:'Modo',proc:'Procedimiento',modD:'Monto Desde',modH:'Monto Hasta'}},
   prov:{title:'Proveedores',cols:{nombre:'Proveedor',totalRDP:'Total RDP',totalPend:'Total Pendientes',totalLegit:'Total Legítimos Abonos',totalLegitPend:'Legítimos Impagos'}},
   legit:{title:'Legítimos Abonos',cols:{i:'Ingreso',e:'Expediente',p:'Proveedor',o:'Objeto',c:'Comprobante',per:'Período',gu:'GU',gg:'Gerencia',l:'Línea',m:'Moneda',a:'Monto',ep:'Estado',ps:'Paso',obs:'Observación',inf:'Informado'}},
-  cuotasMes:{title:'Cuotas 2026 - Mensual',cols:{mes:'Mes',sol:'Solicitado',devTeo:'Devengado Teórico',aut:'Autorizado',pag:'Pagado',deuda:'Deuda Exigible',diffD:'Dif. Autorizado-Teórico',diffE:'Dif. Pagado-Teórico'}},
-  cuotasFuente:{title:'Cuotas 2026 - Por Fuente',cols:{concepto:'Concepto',credito:'Crédito',devengado:'Devengado',pagado:'Pagado',noPagado:'No Pagado',pctDev:'% Devengado',pctPag:'% Pagado',devTeoMensual:'Dev.Teórico Mensual',devRealMensual:'Dev.Real Mensual'}}
+  cuotasMes:{title:'Cuotas 2026 - Detalle mensual',cols:{mes:'Mes',teo:'Teórico',sol:'Solicitado',dev:'Devengado',pag:'Pagado',deuda:'Deuda Exigible',devTeo:'Dev - Teórico',pagTeo:'Pag - Teórico',solTeo:'Sol - Teórico',devSol:'Dev - Solicitado',pagSol:'Pag - Solicitado',pagDev:'Pag - Devengado',pctDevSol:'% Dev/Sol',pctPagDev:'% Pag/Dev',pctDevTeo:'% Dev/Teórico',pctPagTeo:'% Pag/Teórico',accTeo:'Teórico acum.',accDev:'Devengado acum.',accPag:'Pagado acum.',accDevTeo:'Acum. Dev - Teórico',accPagTeo:'Acum. Pag - Teórico',accDeuda:'Deuda acum.'}},
+  cuotasFuente:{title:'Cuotas 2026 - Por Fuente',cols:{concepto:'Fuente',credito:'Crédito',teo:'Teórico',sol:'Solicitado',devengado:'Devengado',pagado:'Pagado',noPagado:'Deuda Exigible',saldo:'Saldo Crédito',pctDev:'% Dev/Crédito',pctPag:'% Pag/Crédito',pctDevTeo:'% Dev/Teórico',pctPagTeo:'% Pag/Teórico',pctDevSol:'% Dev/Sol',pctPagDev:'% Pag/Dev',devTeoMensual:'Teórico mensual',devRealMensual:'Dev. prom. mensual',proy:'Proyección cierre',necesario:'Necesario por mes restante'}},
+  cuotasPartida:{title:'Cuotas 2026 - Por Partida',cols:{partida:'Partida',fuente:'Fuente',sol:'Solicitado',dev:'Devengado',pag:'Pagado',deuda:'Deuda Exigible',devSol:'Dev - Solicitado',pagSol:'Pag - Solicitado',pctDevSol:'% Dev/Sol',pctPagDev:'% Pag/Dev',pctPagSol:'% Pag/Sol'}},
+  cuotasMatriz:{title:'Cuotas 2026 - Matriz de comparaciones',cols:{A:'Medida A',B:'Medida B',a:'Valor A',b:'Valor B',dif:'A - B',pct:'A / B',pctInv:'B / A'}},
+  cuotasDeuda:{title:'Cuotas 2026 - Deuda exigible',cols:{mes:'Mes',partida:'Partida',dev:'Devengado',pag:'Pagado',deuda:'Deuda Exigible',pct:'% pagado'}},
+  cuotasEmpresas:{title:'Cuotas 2026 - Sector ferroviario',cols:{empresa:'Empresa',credito:'Crédito vigente',devengado:'Devengado',pagado:'Pagado',deuda:'Deuda Exigible',saldo:'Saldo crédito',pctDev:'% Dev/Crédito',pctPag:'% Pag/Crédito',pctPagDev:'% Pag/Dev'}}
 };
 window.EXPORT_DATA={};
 
@@ -2220,7 +2908,7 @@ function toAOA(tabKey,forDisplay){
     aoa.push(keys.map(function(k){
       var v=row[k];
       if(v==null) return '';
-      if(typeof v==='number'&&(k==='pctDev'||k==='pctPag')) return (v*100).toFixed(1)+'%';
+      if(typeof v==='number'&&/^pct/.test(k)) return (v*100).toFixed(1)+'%';
       if(typeof v==='number'){
         var rounded=Math.round(v);
         return forDisplay ? rounded.toLocaleString('es-AR') : rounded;
@@ -2254,7 +2942,7 @@ function buildXLSXBlob(tabKey){
     var range=XLSX.utils.decode_range(ws['!ref']);
     for(var c=range.s.c;c<=range.e.c;c++){
       var key=keys[c];
-      if(key==='pctDev'||key==='pctPag') continue;
+      if(/^pct/.test(key)) continue;
       for(var r=1;r<=range.e.r;r++){
         var addr=XLSX.utils.encode_cell({r:r,c:c});
         var cell=ws[addr];
@@ -2349,88 +3037,8 @@ function exportBar(tabKey){
 
 function pctStr(n){return (n*100).toLocaleString('es-AR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';}
 
-function renderCuotas(){
-  window.EXPORT_DATA.cuotasMes=CUOTAS_MES;
-  window.EXPORT_DATA.cuotasFuente=CUOTAS_FUENTE;
-  var CUOTAS_ULTIMA_ACTUALIZACION='23/09/2026';
-  document.getElementById('cuotas-update').innerHTML=
-    '<div style="display:inline-flex;align-items:center;gap:6px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:20px;padding:5px 12px;font-size:10.5px;font-weight:700;color:#1e40af">'+
-    '&#128260; &#218;ltima actualizaci&#243;n: '+CUOTAS_ULTIMA_ACTUALIZACION+'</div>';
-  var tot=CUOTAS_FUENTE[CUOTAS_FUENTE.length-1];
-  var st=document.getElementById('cuotas-stats');
-  st.innerHTML=exportBar('cuotasFuente')+exportBar('cuotasMes')+
-    '<div class="sc" style="min-width:150px;padding:12px 14px;border-top:3px solid #1e40af"><div class="sl" style="font-size:10px">Cr&#233;dito Total 2026</div><div class="sv" style="font-size:16px;font-weight:800;color:#1e40af">'+fm(tot.credito)+'</div><div class="ss">presupuesto anual</div></div>'+
-    '<div class="sc" style="min-width:150px;padding:12px 14px;border-top:3px solid #d97706"><div class="sl" style="font-size:10px">Devengado</div><div class="sv" style="font-size:16px;font-weight:800;color:#d97706">'+fm(tot.devengado)+'</div><div class="ss">'+pctStr(tot.pctDev)+' del cr&#233;dito</div></div>'+
-    '<div class="sc" style="min-width:150px;padding:12px 14px;border-top:3px solid #057a55"><div class="sl" style="font-size:10px">Pagado</div><div class="sv" style="font-size:16px;font-weight:800;color:#057a55">'+fm(tot.pagado)+'</div><div class="ss">'+pctStr(tot.pctPag)+' del cr&#233;dito</div></div>'+
-    '<div class="sc" style="min-width:150px;padding:12px 14px;border-top:3px solid #dc2626"><div class="sl" style="font-size:10px">No Pagado</div><div class="sv" style="font-size:16px;font-weight:800;color:#dc2626">'+fm(tot.noPagado)+'</div><div class="ss">devengado pendiente de pago</div></div>';
-
-  // % Ejecucion por Fuente
-  var colF={'FUENTE 11 - TESORO CORRIENTES':'#1a56db','FUENTE 11 - TESORO CAPITAL':'#7c3aed','SIFER CORRIENTE':'#057a55','SIFER CAPITAL':'#d97706'};
-  var fh='<div class="sc" style="padding:14px 16px"><div class="sl" style="font-size:10px;margin-bottom:10px">&#128202; % EJECUCI&#211;N POR FUENTE (Devengado / Pagado vs Cr&#233;dito)</div>';
-  CUOTAS_FUENTE.filter(function(f){return f.concepto!=='TOTAL';}).forEach(function(f){
-    var col=colF[f.concepto]||'#6b7280';
-    var pctDev=Math.min(f.pctDev*100,100);
-    var pctPag=Math.min(f.pctPag*100,100);
-    fh+='<div style="margin-bottom:12px">';
-    fh+='<div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:#111928;margin-bottom:4px"><span>'+f.concepto+'</span><span style="font-family:\'JetBrains Mono\',monospace;color:#6b7280;font-weight:600">Cr&#233;dito: '+fm(f.credito)+'</span></div>';
-    fh+='<div style="display:flex;align-items:center;gap:8px;margin-bottom:3px"><div style="width:60px;font-size:9.5px;color:#6b7280">Devengado</div><div style="flex:1;background:#f3f4f6;border-radius:4px;height:16px;overflow:hidden"><div style="height:100%;width:'+pctDev+'%;background:'+col+';border-radius:4px"></div></div><div style="width:110px;font-size:10px;text-align:right;color:'+col+';font-weight:700">'+pctStr(f.pctDev)+' &#183; '+fm(f.devengado)+'</div></div>';
-    fh+='<div style="display:flex;align-items:center;gap:8px"><div style="width:60px;font-size:9.5px;color:#6b7280">Pagado</div><div style="flex:1;background:#f3f4f6;border-radius:4px;height:16px;overflow:hidden"><div style="height:100%;width:'+pctPag+'%;background:'+col+'99;border-radius:4px"></div></div><div style="width:110px;font-size:10px;text-align:right;color:'+col+';font-weight:700">'+pctStr(f.pctPag)+' &#183; '+fm(f.pagado)+'</div></div>';
-    fh+='</div>';
-  });
-  fh+='</div>';
-  document.getElementById('cuotas-fuente').innerHTML=fh;
-
-  // Comparativo mensual: Solicitado vs Devengado Teorico vs Autorizado vs Pagado
-  var mesesConDatos=CUOTAS_MES.filter(function(m){return m.sol>0||m.aut>0;});
-  var maxVal=Math.max.apply(null,mesesConDatos.map(function(m){return Math.max(m.sol,m.devTeo,m.aut,m.pag);}));
-  var mh='<div class="sc" style="padding:14px 16px"><div class="sl" style="font-size:10px;margin-bottom:10px">&#128200; COMPARATIVO MENSUAL: SOLICITADO vs DEVENGADO TE&#211;RICO vs AUTORIZADO vs PAGADO</div>';
-  mh+='<div style="display:flex;gap:10px;font-size:9.5px;margin-bottom:8px;flex-wrap:wrap">'+
-    '<span><span style="display:inline-block;width:9px;height:9px;background:#9ca3af;border-radius:2px;margin-right:3px"></span>Solicitado</span>'+
-    '<span><span style="display:inline-block;width:9px;height:9px;background:#6b7280;border-radius:2px;margin-right:3px"></span>Dev. Te&#243;rico</span>'+
-    '<span><span style="display:inline-block;width:9px;height:9px;background:#1a56db;border-radius:2px;margin-right:3px"></span>Autorizado</span>'+
-    '<span><span style="display:inline-block;width:9px;height:9px;background:#057a55;border-radius:2px;margin-right:3px"></span>Pagado</span></div>';
-  mesesConDatos.forEach(function(m){
-    var mesCorto=m.mes.substring(0,3);
-    mh+='<div style="margin-bottom:9px">';
-    mh+='<div style="font-size:10px;font-weight:700;color:#374151;margin-bottom:2px">'+m.mes+(m.diffE!==null&&m.diffE<0?' <span style="color:#dc2626;font-weight:600;font-size:9px">(deuda: '+fm(Math.abs(m.diffE))+' vs. te&#243;rico)</span>':'')+'</div>';
-    [['Solicitado',m.sol,'#9ca3af'],['Dev.Te&#243;rico',m.devTeo,'#6b7280'],['Autorizado',m.aut,'#1a56db'],['Pagado',m.pag,'#057a55']].forEach(function(row){
-      var pct=maxVal>0?Math.round(row[1]/maxVal*100):0;
-      mh+='<div style="display:flex;align-items:center;gap:6px;margin-bottom:1px">';
-      mh+='<div style="width:68px;font-size:9px;color:#6b7280">'+row[0]+'</div>';
-      mh+='<div style="flex:1;background:#f3f4f6;border-radius:3px;height:12px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:'+row[2]+';border-radius:3px"></div></div>';
-      mh+='<div style="width:100px;font-size:9.5px;text-align:right;color:#374151;font-weight:600">'+fm(row[1])+'</div>';
-      mh+='</div>';
-    });
-    mh+='</div>';
-  });
-  mh+='</div>';
-  document.getElementById('cuotas-mensual').innerHTML=mh;
-
-  // Deuda exigible acumulada + proyeccion simple
-  var acumulada=0, dh='<div class="sc" style="padding:14px 16px"><div class="sl" style="font-size:10px;margin-bottom:10px">&#128181; DEUDA EXIGIBLE ACUMULADA Y PROYECCI&#211;N</div>';
-  var mesesConDeuda=CUOTAS_MES.filter(function(m){return m.sol>0;});
-  var maxDeuda=Math.max.apply(null,mesesConDeuda.map(function(m){return m.deuda;}),1);
-  mesesConDeuda.forEach(function(m){
-    acumulada+=m.deuda;
-    var pct=maxDeuda>0?Math.round(m.deuda/maxDeuda*100):0;
-    dh+='<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">';
-    dh+='<div style="width:80px;font-size:10px;font-weight:600;color:#374151">'+m.mes+'</div>';
-    dh+='<div style="flex:1;background:#f3f4f6;border-radius:4px;height:16px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:linear-gradient(90deg,#dc2626,#f87171);border-radius:4px"></div></div>';
-    dh+='<div style="width:110px;font-size:10px;text-align:right;color:#dc2626;font-weight:700">'+fm(m.deuda)+'</div>';
-    dh+='</div>';
-  });
-  dh+='<div style="height:1px;background:#e5e7eb;margin:8px 0"></div>';
-  dh+='<div style="display:flex;justify-content:space-between;font-size:11px"><span style="font-weight:700;color:#111928">Deuda exigible acumulada (suma de meses con saldo)</span><span style="font-weight:800;color:#dc2626">'+fm(acumulada)+'</span></div>';
-  // Proyeccion simple: meses restantes con Dev.Teorico pendiente de autorizar/pagar al ritmo actual
-  var mesesRestantes=CUOTAS_MES.filter(function(m){return m.aut===0&&m.sol===0&&m.devTeo>0;}).length + CUOTAS_MES.filter(function(m){return m.sol>0&&m.aut===0;}).length;
-  var devTeoMensualProm=tot.devTeoMensual;
-  if(mesesRestantes>0){
-    var proyeccion=mesesRestantes*devTeoMensualProm;
-    dh+='<div style="margin-top:8px;padding:8px 10px;background:#fef3c7;border-radius:8px;font-size:10.5px;color:#92400e"><b>&#9888;&#65039; Proyecci&#243;n:</b> si continuara el devengado te&#243;rico mensual promedio ('+fm(devTeoMensualProm)+') sin autorizarse pago, quedar&#237;an <b>'+fm(proyeccion)+'</b> adicionales sin cubrir en los '+mesesRestantes+' meses restantes con datos pendientes de carga.</div>';
-  }
-  dh+='</div>';
-  document.getElementById('cuotas-deuda').innerHTML=dh;
-}
+// Integración: tarjeta Decisión GGA en el Consolidado
+(function(){var _rd=renderDash;renderDash=function(){var r=_rd.apply(this,arguments);try{renderGGACard();}catch(e){}return r;};})();
 
 </script></body>
 </html>
