@@ -425,6 +425,75 @@ a_{--a:#1a56db;--g:#057a55;--r:#c81e1e;--m:#6b7280;--b:#ebf5ff;--s:#fff;--s2:#f0
   .cq-q-l{width:100%}
   .gga-rows>div{grid-template-columns:110px 1fr 48px}
 }
+
+/* ══════ Estética unificada (todas las pestañas) ══════ */
+.pg-hero{background:radial-gradient(1200px 300px at 0% 0%,#1d4fbf 0%,#0b1f4d 60%);color:#fff;border-radius:18px;padding:16px 20px;box-shadow:0 8px 24px rgba(11,31,77,.22);margin-bottom:12px}
+.pg-hero .cq-hero-big span{font-size:34px}
+.pg-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:12px}
+.pg-kpi{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:9px 12px;min-width:0}
+.pg-kpi .cq-kpi-v{font-size:18px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pg-click{cursor:pointer;transition:background .15s,transform .12s}
+.pg-click:hover{background:rgba(255,255,255,.16);transform:translateY(-1px)}
+/* stats existentes dentro del encabezado */
+.pg-hero .sr2,.pg-hero #legit-stats{margin:12px 0 0!important;padding:0!important;display:grid!important;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))!important;gap:8px!important}
+.pg-hero .sc{background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.14)!important;border-top:1px solid rgba(255,255,255,.14)!important;border-radius:12px!important;color:#fff;min-width:0!important;padding:9px 12px!important}
+.pg-hero .sl{color:rgba(255,255,255,.8)!important;font-family:'Outfit',sans-serif!important;font-weight:700}
+.pg-hero .sv{color:#fff!important;font-family:'JetBrains Mono',monospace!important;font-size:18px!important;letter-spacing:-.5px!important;font-weight:800!important}
+.pg-hero .ss{color:rgba(255,255,255,.7)!important}
+.pg-tools{background:#fff;border:1px solid #e3e7ef;border-radius:14px;padding:12px 14px 4px;box-shadow:0 1px 3px rgba(16,24,40,.05);margin-bottom:12px}
+.pg-tools .src{margin-bottom:10px}
+
+/* componentes */
+.card{background:#fff!important;border-radius:14px!important;border-top:1px solid #e3e7ef!important;border-right:1px solid #e3e7ef!important;border-bottom:1px solid #e3e7ef!important;border-left-width:4px!important;box-shadow:0 1px 3px rgba(16,24,40,.05)!important;transition:box-shadow .15s,transform .12s}
+.card:hover{box-shadow:0 6px 16px rgba(16,24,40,.09)!important;transform:translateY(-1px)}
+.ct{font-weight:800;color:#0b1f4d;letter-spacing:-.1px}
+.sb{color:#0b1f4d!important;font-family:'Outfit',sans-serif!important;font-size:11.5px!important;font-weight:800!important;letter-spacing:.5px!important;border-bottom:none!important;padding:6px 0 8px 10px!important;border-left:4px solid #f5c400;margin:6px 0 10px!important}
+.sc{border-radius:12px;border-color:#e3e7ef}
+.pil{border-radius:20px;font-family:'Outfit',sans-serif;transition:background .15s,color .15s,border-color .15s}
+.pil:hover{border-color:#1a56db;color:#1a56db}
+.pil.on{background:#1a56db!important;color:#fff!important;border-color:#1a56db!important}
+.vt{border-radius:20px;font-weight:700}
+.vt.on{background:#1a56db;color:#fff;border-color:#1a56db}
+.src,.dv select,.dv input[type=date],#view-legit select,#view-legit input{border-radius:10px!important;border:1px solid #c4cad8!important;font-family:'Outfit',sans-serif}
+.src:focus,.dv select:focus,#view-legit input:focus{border-color:#1a56db!important;box-shadow:0 0 0 3px rgba(26,86,219,.12)}
+.mt{font-size:12px}
+.mt th{background:#f5f7fb!important;color:#374151!important;font-family:'Outfit',sans-serif!important;font-size:10px!important;text-transform:uppercase;letter-spacing:.3px;border-bottom:1px solid #e5e7eb!important}
+.mt tr:hover td{background:#fafbff}
+#view-tabla .mt td:last-child{font-family:'JetBrains Mono',monospace;font-size:11px}
+#modosBarWrap{border-radius:14px!important;border:1px solid #e3e7ef!important}
+#modosBarWrap>div:first-child{font-family:'Outfit',sans-serif!important;font-size:12px!important;font-weight:800!important;color:#111928!important;text-transform:none!important;letter-spacing:.1px!important}
+#rCv .sb,#rCv>div{font-family:'Outfit',sans-serif}
+
+/* Leg. abonos */
+#view-legit{background:#f0f2f6}
+#legit-chart-row .sc{background:#fff;border:1px solid #e3e7ef;box-shadow:0 1px 3px rgba(16,24,40,.05)}
+#legit-chart-row .sl{font-family:'Outfit',sans-serif;font-weight:800;color:#111928;font-size:12px!important;text-transform:none;letter-spacing:.1px}
+#legit-list{background:#fff;border:1px solid #e3e7ef;border-radius:14px;margin:0 12px 12px;padding:10px!important}
+#legit-list th{background:#f5f7fb!important;font-size:10px;text-transform:uppercase;letter-spacing:.3px;color:#374151!important}
+#legit-list tbody tr:hover{background:#fafbff!important}
+#legit-list td{border-bottom:1px solid #f0f2f5}
+
+/* Consolidado */
+.dash-greeting{background:radial-gradient(800px 200px at 0% 0%,#1d4fbf 0%,#0b1f4d 70%)!important;border-radius:14px!important;border-bottom:3px solid #f5c400}
+.con{border-radius:14px!important;border:1px solid #e3e7ef!important;border-top:4px solid #1a56db!important;box-shadow:0 1px 3px rgba(16,24,40,.06)!important}
+.dc{border-radius:14px!important;border-color:#e3e7ef!important;box-shadow:0 1px 3px rgba(16,24,40,.05)!important}
+.dc:hover{box-shadow:0 6px 16px rgba(16,24,40,.09)!important}
+.msg.b .bbl{border:1px solid #e3e7ef;box-shadow:0 1px 2px rgba(16,24,40,.05)}
+.msg.u .bbl{background:#0b1f4d}
+
+/* Barra superior (reloj / TC) */
+.tcbar{border-radius:10px;border:1px solid #e3e7ef!important}
+
+@media (max-width:760px){
+  .pg-hero{padding:14px}
+  .pg-hero .cq-hero-big span{font-size:26px}
+  .pg-kpis,.pg-hero .sr2,.pg-hero #legit-stats{grid-template-columns:1fr 1fr!important}
+  #legit-list{margin:0 8px 8px}
+  .pg-hero .sv,.pg-kpi .cq-kpi-v{font-size:15px!important;white-space:normal;overflow-wrap:anywhere}
+}
+@media (max-width:899px){
+  .tab{flex:0 0 auto!important;min-width:78px!important;padding:8px 10px 6px!important}
+}
 </style>
 </head>
 <body>
@@ -586,6 +655,8 @@ setVH();window.addEventListener('resize',setVH);
 
 <div class="view" id="view-pend">
   <div class="dv">
+    <section class="pg-hero" id="hero-pend"></section>
+    <div class="pg-tools">
     <div style="display:flex;gap:8px;margin-bottom:10px;align-items:center">
       <input class="src" placeholder="Buscar pendientes..." oninput="fP(this.value)" style="margin:0;flex:1">
       <select onchange="pendSort=this.value;renderP()" style="background:#fff;border:1px solid #c4cad8;border-radius:10px;padding:8px 10px;font-size:12px;color:#374151;font-family:'Outfit',sans-serif;outline:none;cursor:pointer">
@@ -605,13 +676,15 @@ setVH();window.addEventListener('resize',setVH);
       <div class="pil" onclick="sT('emergencia',this)" style="border-color:#fca5a5;color:#dc2626">Emergencia</div>
       <div class="pil" onclick="sT('habitual',this)">Habitual</div>
     </div>
+    </div>
     <div id="pL"></div>
   </div>
 </div>
 
 <div class="view" id="view-rdp">
   <div class="dv">
-    <div class="sr2" id="rSt"></div>
+    <section class="pg-hero" id="hero-rdp"></section>
+    <div class="sr2" id="rSt" style="display:none"></div>
     <div style="display:flex;gap:8px;margin-bottom:12px">
       <div class="vt on" id="tL" onclick="rv('list')">Lista</div>
       <div class="vt" id="tG" onclick="rv('chart')">Grafico</div>
@@ -645,12 +718,14 @@ setVH();window.addEventListener('resize',setVH);
 
 <div class="view" id="view-modos">
   <div class="dv">
+    <section class="pg-hero" id="hero-modos"></section>
     <!-- Barras por modo -->
     <div id="modosBarWrap" style="background:#fff;border-radius:14px;border:1.5px solid #d8dde8;padding:12px 14px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.06)">
       <div style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;font-family:'JetBrains Mono',monospace">Importe por Modo</div>
       <div style="position:relative;height:140px"><canvas id="modosBar"></canvas></div>
     </div>
-    <div class="sr2" id="mSt"></div>
+    <div class="sr2" id="mSt" style="display:none"></div>
+    <div class="pg-tools">
     <div class="fps" id="mFps">
       <div class="pil on" onclick="setMF('todos','todos',this)">Todos</div>
       <div class="pil" onclick="setMF('I','todos',this)">Modo I</div>
@@ -677,13 +752,14 @@ setVH();window.addEventListener('resize',setVH);
       <label style="font-size:11px;color:#6b7280;font-family:'JetBrains Mono',monospace">Hasta:</label>
       <input type="date" onchange="modosDateTo=this.value;renderM()" style="background:#fff;border:1px solid #c4cad8;border-radius:8px;padding:6px 10px;font-size:12px;font-family:'Outfit',sans-serif;outline:none;color:#374151">
     </div>
+    </div>
     <div id="mL"></div>
   </div>
 </div>
 
 <div class="view" id="view-tabla">
   <div class="dv">
-    <div class="sb">Tabla de Modos de Contratacion</div>
+    <section class="pg-hero" id="hero-tabla"></section>
     <div id="tablaExportBar"></div>
     <div style="overflow-x:auto;border-radius:12px;border:1px solid #d8dde8">
       <table class="mt"><thead><tr><th>Modo</th><th>Procedimiento</th><th>Modulos</th><th>Monto ARS</th></tr></thead>
@@ -693,9 +769,9 @@ setVH();window.addEventListener('resize',setVH);
 </div>
 
 <div class="view" id="view-legit" class="view" style="flex-direction:column;overflow:auto">
-  <div id="legit-stats" style="display:flex;gap:10px;flex-wrap:wrap;padding:12px 12px 0"></div>
+  <section class="pg-hero" style="margin:12px 12px 10px"><div id="hero-legit"></div><div id="legit-stats"></div></section>
   <div id="legit-chart-row" style="padding:0 12px 8px;display:flex;gap:10px;flex-wrap:wrap"></div>
-  <div style="padding:6px 12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+  <div class="pg-tools" style="margin:0 12px 10px;padding:10px 12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center">
     <input id="legitSearch" oninput="fLegit(this.value)" placeholder="&#128269; Buscar proveedor u objeto..." style="flex:1;min-width:180px;padding:7px 11px;border:1px solid #d1d5db;border-radius:8px;font-size:12px;outline:none">
     <input id="legitExpSearch" oninput="renderLegit()" placeholder="&#128196; N&#176; Expediente..." style="width:180px;padding:7px 11px;border:1px solid #d1d5db;border-radius:8px;font-size:12px;outline:none">
     <select id="legitEstado" onchange="renderLegit()" style="padding:6px 10px;border:1px solid #d1d5db;border-radius:8px;font-size:12px;background:#fff;outline:none">
@@ -748,6 +824,8 @@ setVH();window.addEventListener('resize',setVH);
 </div>
 <div class="view" id="view-prov">
   <div class="dv">
+    <section class="pg-hero"><div id="hero-prov"></div><div class="sr2" id="provSt"></div></section>
+    <div class="pg-tools">
     <!-- Filtros de orden -->
     <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center">
       <span style="font-size:10px;font-weight:600;color:#6b7280;font-family:'JetBrains Mono',monospace;text-transform:uppercase">Ordenar:</span>
@@ -769,7 +847,7 @@ setVH();window.addEventListener('resize',setVH);
       </div>
     </div>
     <input class="src" id="provSrc" placeholder="Buscar proveedor o empresa..." oninput="fProv(this.value)">
-    <div class="sr2" id="provSt"></div>
+    </div>
     <div id="provList"></div>
   </div>
 </div>
@@ -1298,7 +1376,7 @@ function setMF(f,t,el){
 }
 function renderM(){
   // ── Bar chart: importe por modo ──
-  var mColors2={'I':'#1a56db','II':'#057a55','III':'#9f1239','IV':'#d97706','V':'#7c3aed','VI':'#0891b2','VII':'#374151'};
+  var mColors2={'I':'#2a78d6','II':'#1baf7a','III':'#eb6834','IV':'#4a3aa7','V':'#7c3aed','VI':'#0891b2','VII':'#374151'};
   var allModes=['I','II','III','IV','V','VI','VII'];
   var allData=[...MODOS_EXPEDIENTES,...MODO_IV];
   var barLabels=allModes.filter(function(m){return allData.some(function(x){return x.m===m&&(x.i||0)>0;});});
@@ -2193,6 +2271,7 @@ function goTab(name){
   if(name==='prov') renderProv();
   if(name==='legit') renderLegit();
   if(name==='cuotas') renderCuotas();
+  try{renderHero(name);}catch(e){}
   var tb=document.getElementById('trainBtn');
   if(tb) tb.style.display=name==='chat'?'none':'flex';
 }
@@ -3085,6 +3164,79 @@ function exportBar(tabKey){
 }
 
 function pctStr(n){return (n*100).toLocaleString('es-AR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';}
+
+
+// ═══════════ ENCABEZADOS DE PESTAÑA (estética Decisión GGA) ═══════════
+function pgM(n){var v=n/1e6;return '$'+Math.round(v).toLocaleString('es-AR')+' M';}
+function pgKpi(lbl,v,sub,col,onclick){
+  return '<div class="pg-kpi'+(onclick?' pg-click':'')+'"'+(onclick?' onclick="'+onclick+'" title="Filtrar"':'')+'>'+
+    '<div class="cq-kpi-l">'+(col?'<span class="cq-sw" style="background:'+col+'"></span>':'')+lbl+'</div>'+
+    '<div class="cq-kpi-v">'+v+'</div>'+(sub?'<div class="cq-kpi-s">'+sub+'</div>':'')+'</div>';
+}
+function pgHead(eyebrow,big,bigLbl,sub,kpis){
+  return '<div class="pg-top"><div class="cq-eyebrow">'+eyebrow+'</div>'+
+    '<div class="cq-hero-big"><span>'+big+'</span><small>'+bigLbl+'</small></div>'+
+    (sub?'<div class="cq-hero-sub">'+sub+'</div>':'')+'</div>'+
+    (kpis&&kpis.length?'<div class="pg-kpis">'+kpis.join('')+'</div>':'');
+}
+// Pulsa la píldora de filtro cuyo texto coincide (reutiliza los filtros existentes)
+function pgPill(cont,txt){
+  var ps=document.querySelectorAll('#'+cont+' .pil');
+  for(var i=0;i<ps.length;i++){if(ps[i].textContent.trim()===txt){ps[i].click();return;}}
+}
+function renderHero(tab){
+  var el=document.getElementById('hero-'+tab);if(!el)return;
+  if(tab==='pend'){
+    var t=cP(PENDIENTES),tot=t.a+t.uA;
+    var grp=[['PARA ABRIR EXPTE','Para abrir expte','Abrir expte','#2a78d6'],['PARA PUBLICAR LLAMADO A COTIZAR','Para publicar','Publicar','#eb6834'],['PARA FIRMAR DISPOSICION','Para firmar','Firmar','#1baf7a'],['PARA LIBERAR ORDEN DE COMPRA','Liberar OC','Liberar OC','#4a3aa7']];
+    var em=PENDIENTES.filter(function(p){return gt(p).l==='Emergencia Ferroviaria';}),te=cP(em);
+    el.innerHTML=pgHead('Pendientes · Gerencia de Compras',pgM(tot),'en trámites pendientes',
+      PENDIENTES.length+' expedientes · ARS '+fm(t.a)+(t.u?' + USD '+Math.round(t.u).toLocaleString('es-AR')+' (TC '+tc.toLocaleString('es-AR')+')':''),
+      grp.map(function(g){var it=PENDIENTES.filter(function(p){return p.tramite===g[0];}),c=cP(it);return pgKpi(g[1],it.length,pgM(c.a+c.uA),g[3],"pgPill('pPs','"+g[2]+"')");})
+      .concat([pgKpi('Emergencia ferroviaria',em.length,pgM(te.a+te.uA)+' · '+(tot?Math.round((te.a+te.uA)/tot*100):0)+'% del total','#e34948',"pgPill('pPs','Emergencia')")]));
+  }
+  else if(tab==='rdp'){
+    var tr=cR(RDP),byC={};
+    RDP.forEach(function(r){var k=(r.contratista||'-').trim();byC[k]=(byC[k]||0)+(r.importe||0);});
+    var top=Object.entries(byC).sort(function(a,b){return b[1]-a[1];});
+    var activos=RDP.filter(function(r){return (r.importe||0)>0;}).length;
+    el.innerHTML=pgHead('RDP · Redeterminaciones de precio',pgM(tr.a),'en cuotas de redeterminación',
+      RDP_CUOTAS+' cuotas · '+RDP_EXPEDIENTES+' expedientes · '+top.length+' contratistas',
+      [pgKpi('Cuotas RDP',RDP_CUOTAS,activos+' con importe','#2a78d6'),
+       pgKpi('Expedientes',RDP_EXPEDIENTES,'contratos con RDP','#1baf7a'),
+       pgKpi('Promedio por cuota',pgM(tr.a/Math.max(1,activos)),'sobre cuotas con importe','#eb6834'),
+       pgKpi('Mayor contratista',cqEsc(top[0][0]).substring(0,26),pgM(top[0][1])+' · '+Math.round(top[0][1]/tr.a*100)+'% del total','#4a3aa7'),
+       pgKpi('Top 5 contratistas',Math.round(top.slice(0,5).reduce(function(s,x){return s+x[1];},0)/tr.a*100)+'%','del monto total','#eda100')]);
+  }
+  else if(tab==='modos'){
+    var all=[].concat(MODOS_EXPEDIENTES,MODO_IV).filter(function(m){return (m.i||0)>0;});
+    var tm=all.reduce(function(s,m){return s+(m.i||0);},0);
+    var emg=all.filter(function(m){return (m.t||'').toUpperCase().indexOf('EMERG')>=0;}),tEm=emg.reduce(function(s,m){return s+m.i;},0);
+    var cols={'I':'#2a78d6','II':'#1baf7a','III':'#eb6834','IV':'#4a3aa7'};
+    el.innerHTML=pgHead('Modos I-IV · Contrataciones en proceso',pgM(tm),'en '+all.length+' expedientes','Montos por modo de contratación · clic para filtrar',
+      ['I','II','III','IV'].map(function(m){var it=(m==='IV'?MODO_IV:all.filter(function(x){return x.m===m;})).filter(function(x){return (x.i||0)>0;}),s=it.reduce(function(a,x){return a+x.i;},0);
+        return pgKpi('Modo '+m,it.length,pgM(s)+' · '+(tm?Math.round(s/tm*100):0)+'%',cols[m],"pgPill('mFps','Modo "+m+"')");})
+      .concat([pgKpi('Emergencia',emg.length,pgM(tEm)+' · '+(tm?Math.round(tEm/tm*100):0)+'%','#e34948',"pgPill('mFps','Emergencia')")]));
+  }
+  else if(tab==='tabla'){
+    var mod=MT[1].monD/MT[1].modD;
+    el.innerHTML=pgHead('Modos de contratación · Cuadro vigente',MT.length+' modos','de contratación por módulos','Valor del módulo: <b>'+fm(mod)+'</b> · montos en ARS',
+      [pgKpi('Valor del módulo',fm(mod),'base de cálculo','#2a78d6'),
+       pgKpi('Contratación directa',('hasta '+pgM(MT[3].monH)),'Modos I a IV','#1baf7a'),
+       pgKpi('Licitación abreviada',pgM(MT[4].monD)+' a '+pgM(MT[4].monH),'Modo V','#eb6834'),
+       pgKpi('Licitación pública',('desde '+pgM(MT[6].monD)),'Modo VII','#4a3aa7')]);
+  }
+  else if(tab==='prov'){
+    el.innerHTML=pgHead('Proveedores · Exposición consolidada',pgM(cR(RDP).a+cP(PENDIENTES).a+LEGITIMOS.filter(function(r){return r.ep!=='PAGADO'&&r.m==='ARS';}).reduce(function(s,r){return s+r.a;},0)),'en RDP, pendientes y legítimos impagos (ARS)','Cruce por proveedor de todas las fuentes del sistema',[]);
+  }
+  else if(tab==='legit'){
+    var pend=LEGITIMOS.filter(function(r){return r.ep!=='PAGADO';});
+    var ars=pend.filter(function(r){return r.m==='ARS';}).reduce(function(s,r){return s+r.a;},0);
+    var usd=pend.filter(function(r){return r.m==='USD';}).reduce(function(s,r){return s+r.a;},0);
+    el.innerHTML=pgHead('Legítimos abonos · Seguimiento de pago',pgM(ars),'pendientes de pago (ARS)',
+      pend.length+' expedientes sin pagar de '+LEGITIMOS.length+(usd?' · más USD '+Math.round(usd).toLocaleString('es-AR'):'')+' · los indicadores de abajo responden a los filtros',[]);
+  }
+}
 
 // Integración: tarjeta Decisión GGA en el Consolidado
 (function(){var _rd=renderDash;renderDash=function(){var r=_rd.apply(this,arguments);try{renderGGACard();}catch(e){}return r;};})();
