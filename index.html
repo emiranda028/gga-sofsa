@@ -581,6 +581,8 @@ button,input,select,textarea{font-family:inherit}
   #view-legit .pg-tools input,#view-legit .pg-tools select{width:100%!important;min-width:0!important;font-size:12px!important;padding:6px 8px!important}
   #view-legit .pg-tools #legitSearch{grid-column:1/-1}
 }
+
+#cq-root,#view-legit,.dv{overflow-anchor:none}
 </style>
 </head>
 <body>
@@ -3308,7 +3310,14 @@ function stickyInit(){
     root.dataset.sticky='1';
     root.addEventListener('scroll',function(){
       var q=document.getElementById('cqConsulta'),hero=document.getElementById('cqHero');if(!q||!hero)return;
-      q.classList.toggle('compact',root.scrollTop>hero.offsetTop+hero.offsetHeight+40);
+      var lim=hero.offsetTop+hero.offsetHeight,y=root.scrollTop,on=q.classList.contains('compact');
+      // histéresis: se compacta pasando el límite y se expande recién bastante antes, sin rebotes
+      if(!on&&y>lim+80){
+        var h0=q.offsetHeight;q.classList.add('compact');
+        q.style.marginBottom=(12+h0-q.offsetHeight)+'px'; // conserva el alto en el flujo: la página no salta
+      } else if(on&&y<lim-40){
+        q.classList.remove('compact');q.style.marginBottom='';
+      }
     },{passive:true});
   }
   var lv=document.getElementById('view-legit'),lt=lv&&lv.querySelector('.pg-tools');
