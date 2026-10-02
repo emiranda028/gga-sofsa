@@ -590,8 +590,8 @@ button,input,select,textarea{font-family:inherit}
 .mm-btn:hover{opacity:1;background:#eef4ff;color:#1a56db;border-color:#1a56db}
 .cq-hero>.mm-btn,.pg-hero>.mm-btn,.gga-card>.mm-btn{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);color:#fff}
 .cq-hero>.mm-btn:hover,.pg-hero>.mm-btn:hover,.gga-card>.mm-btn:hover{background:rgba(255,255,255,.25);color:#fff}
-.mm-host.is-min>:not(.mm-btn):not(:nth-child(2)){display:none!important}
-.card.uc.is-min>.uc-t{display:block!important}
+.mm-host.is-min>:not(.mm-btn):not(.mm-fs):not(:nth-child(3)){display:none!important}
+.card.uc.mm-host.is-min>.uc-t.uc-t{display:block!important}
 .card.uc.is-min{gap:4px}
 .pg-hero.is-min .pg-kpis,.pg-hero.is-min .cq-hero-sub{display:none!important}
 .cq-hero.is-min .cq-hero-ctrl{display:none}
@@ -611,6 +611,30 @@ button,input,select,textarea{font-family:inherit}
 .hdr-gg{font-size:12px;color:rgba(255,255,255,.9);margin-top:2px}
 .hdr-gg b{color:#f5c400;font-weight:700}
 @media (max-width:760px){.hdr-gg{font-size:10.5px}}
+
+/* ══════ Pantalla completa ══════ */
+.mm-fs{position:absolute;top:8px;right:38px;z-index:4;width:24px;height:24px;border-radius:50%;border:1px solid #d8dde8;background:#fff;color:#374151;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;opacity:.75;transition:opacity .15s,background .15s}
+.mm-fs:hover{opacity:1;background:#eef4ff;color:#1a56db;border-color:#1a56db}
+.cq-hero>.mm-fs,.pg-hero>.mm-fs,.gga-card>.mm-fs{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);color:#fff}
+.mm-host.is-min>.mm-fs{display:flex!important}
+.card.uc .uc-top{padding-right:60px}
+.cq-card>.cq-sec-t,.cq-card>.cq-cmp-h,.cq-hero-top,.pg-top,.gga-top,.con>div:nth-child(3){padding-right:64px}
+.mm-host.is-full{position:fixed!important;inset:0!important;z-index:1000!important;margin:0!important;border-radius:0!important;overflow:auto!important;max-height:none!important;height:100vh!important;height:100dvh!important;width:100vw!important;padding:28px 32px!important;transform:none!important;box-shadow:none!important;display:block}
+.card.uc.is-full{display:flex!important}
+.mm-host.is-full>.mm-btn{display:none!important}
+.mm-host.is-full>.mm-fs{position:fixed;top:14px;right:16px;width:36px;height:36px;opacity:1;z-index:1001;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.mm-host.is-full .cq-ch{height:42vh}
+.mm-host.is-full .cq-ch.tall{height:60vh}
+.mm-host.is-full#modosBarWrap>div[style*="height"]{height:70vh!important}
+.mm-host.is-full .cq-charts{grid-template-columns:1fr 1fr}
+.mm-host.is-full .uc-t{font-size:20px}
+.mm-host.is-full .uc-amt{font-size:20px}
+.mm-host.is-full .uc-meta b{font-size:14px}
+.mm-host.is-full .cq-tbl{font-size:13px}
+.mm-host.is-full .cq-num td{font-size:12.5px}
+body.has-full{overflow:hidden}
+body.has-full #trainBtn{display:none!important}
+@media (max-width:760px){.mm-host.is-full{padding:56px 12px 16px!important}.mm-host.is-full .cq-charts{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -3357,6 +3381,22 @@ function stickyInit(){
 }
 
 // ═══════════ MINIMIZAR / AMPLIAR TARJETAS ═══════════
+var FS_ICON_OPEN='<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+var FS_ICON_CLOSE='<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+var fsEl=null;
+// Pantalla completa: la tarjeta ocupa toda la ventana (funciona también en celular)
+function fsToggle(el){
+  if(fsEl&&fsEl!==el) fsToggle(fsEl);
+  var on=!el.classList.contains('is-full');
+  el.classList.toggle('is-full',on);
+  document.body.classList.toggle('has-full',on);
+  var f=el.querySelector(':scope>.mm-fs');
+  if(f){f.innerHTML=on?FS_ICON_CLOSE:FS_ICON_OPEN;f.title=on?'Cerrar pantalla completa (Esc)':'Pantalla completa';}
+  if(on){el.dataset.wasMin=el.classList.contains('is-min')?'1':'';el.classList.remove('is-min');fsEl=el;el.scrollTop=0;}
+  else{if(el.dataset.wasMin)el.classList.add('is-min');fsEl=null;}
+  setTimeout(function(){window.dispatchEvent(new Event('resize'));},40);
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&fsEl)fsToggle(fsEl);});
 var MM_SEL='.cq-hero,.cq-card:not(.cq-query),.pg-hero,.card.uc,#modosBarWrap,#legit-chart-row>.sc,.con,.gga-card,#dash .dc';
 function mmLoad(){try{return JSON.parse(localStorage.getItem('gga_min')||'{}');}catch(e){return {};}}
 function mmSave(o){try{localStorage.setItem('gga_min',JSON.stringify(o));}catch(e){}}
@@ -3380,6 +3420,10 @@ function mmDecorate(root){
     b.className='mm-btn';b.type='button';
     b.onclick=function(ev){ev.stopPropagation();ev.preventDefault();mmSet(el,!el.classList.contains('is-min'));};
     el.classList.add('mm-host');el.insertBefore(b,el.firstChild);
+    var f=document.createElement('button');
+    f.className='mm-fs';f.type='button';f.title='Pantalla completa';f.innerHTML=FS_ICON_OPEN;
+    f.onclick=function(ev){ev.stopPropagation();ev.preventDefault();fsToggle(el);};
+    el.insertBefore(f,b.nextSibling);
     mmSet(el,!!st[mmKey(el)],false);
   });
 }
