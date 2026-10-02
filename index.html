@@ -583,6 +583,30 @@ button,input,select,textarea{font-family:inherit}
 }
 
 #cq-root,#view-legit,.dv{overflow-anchor:none}
+
+/* ══════ Minimizar / ampliar ══════ */
+.mm-host{position:relative}
+.mm-btn{position:absolute;top:8px;right:8px;z-index:4;width:24px;height:24px;border-radius:50%;border:1px solid #d8dde8;background:#fff;color:#374151;font-size:15px;line-height:1;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;opacity:.75;transition:opacity .15s,background .15s}
+.mm-btn:hover{opacity:1;background:#eef4ff;color:#1a56db;border-color:#1a56db}
+.cq-hero>.mm-btn,.pg-hero>.mm-btn,.gga-card>.mm-btn{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);color:#fff}
+.cq-hero>.mm-btn:hover,.pg-hero>.mm-btn:hover,.gga-card>.mm-btn:hover{background:rgba(255,255,255,.25);color:#fff}
+.mm-host.is-min>:not(.mm-btn):not(:nth-child(2)){display:none!important}
+.card.uc.is-min>.uc-t{display:block!important}
+.card.uc.is-min{gap:4px}
+.pg-hero.is-min .pg-kpis,.pg-hero.is-min .cq-hero-sub{display:none!important}
+.cq-hero.is-min .cq-hero-ctrl{display:none}
+.mm-host.is-min{padding-bottom:10px!important}
+/* espacio para el botón */
+.card.uc .uc-top{padding-right:30px}
+.cq-card>.cq-sec-t,.cq-card>.cq-cmp-h,.cq-hero-top,.pg-top,.gga-top,.con>div:nth-child(2){padding-right:34px}
+.gga-go{margin-right:6px}
+.mm-all{display:inline-flex;gap:6px;margin-left:auto}
+.pg-tools .mm-all{display:flex;justify-content:flex-end;margin:2px 0 6px}
+.mm-all button{border:1px solid #d8dde8;background:#fff;color:#374151;border-radius:16px;padding:3px 10px;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit}
+.mm-all button:hover{border-color:#1a56db;color:#1a56db}
+.cq-q-head{gap:10px}
+#view-legit .pg-tools .mm-all{margin:0 0 0 auto}
+@media (max-width:760px){#view-legit .pg-tools .mm-all{grid-column:1/-1}}
 </style>
 </head>
 <body>
@@ -3326,6 +3350,49 @@ function stickyInit(){
     new ResizeObserver(function(){lv.style.setProperty('--legit-top',lt.offsetHeight+'px');}).observe(lt);
   }
 }
+
+// ═══════════ MINIMIZAR / AMPLIAR TARJETAS ═══════════
+var MM_SEL='.cq-hero,.cq-card:not(.cq-query),.pg-hero,.card.uc,#modosBarWrap,#legit-chart-row>.sc,.con,.gga-card,#dash .dc';
+function mmLoad(){try{return JSON.parse(localStorage.getItem('gga_min')||'{}');}catch(e){return {};}}
+function mmSave(o){try{localStorage.setItem('gga_min',JSON.stringify(o));}catch(e){}}
+function mmKey(el){
+  var v=el.closest('.view');
+  var t=el.id||(el.querySelector('.uc-t,.cq-sec-t,.cq-eyebrow,.con-t,.dl')||el).textContent;
+  return (v?v.id:'x')+'|'+String(t).replace(/\s+/g,' ').trim().substring(0,80);
+}
+function mmSet(el,min,save){
+  el.classList.toggle('is-min',min);
+  var b=el.querySelector(':scope>.mm-btn');
+  if(b){b.innerHTML=min?'&#43;':'&#8722;';b.title=min?'Ampliar':'Minimizar';b.setAttribute('aria-expanded',min?'false':'true');}
+  if(save!==false){var o=mmLoad(),k=mmKey(el);if(min)o[k]=1;else delete o[k];mmSave(o);}
+  if(!min&&save!==false) setTimeout(function(){window.dispatchEvent(new Event('resize'));},30); // re-dibuja gráficos que estaban ocultos
+}
+function mmDecorate(root){
+  var st=mmLoad();
+  (root||document).querySelectorAll(MM_SEL).forEach(function(el){
+    if(el.querySelector(':scope>.mm-btn'))return;
+    var b=document.createElement('button');
+    b.className='mm-btn';b.type='button';
+    b.onclick=function(ev){ev.stopPropagation();ev.preventDefault();mmSet(el,!el.classList.contains('is-min'));};
+    el.classList.add('mm-host');el.insertBefore(b,el.firstChild);
+    mmSet(el,!!st[mmKey(el)],false);
+  });
+}
+// Contraer / expandir todas las tarjetas de la pestaña visible
+function mmAll(min){
+  var v=document.querySelector('.view.on');if(!v)return;
+  v.querySelectorAll('.mm-host').forEach(function(el){mmSet(el,min);});
+}
+function mmBar(){return '<span class="mm-all"><button type="button" onclick="mmAll(false)">&#9662; Expandir todo</button><button type="button" onclick="mmAll(true)">&#9656; Contraer todo</button></span>';}
+(function(){
+  var pend=false;
+  var run=function(){pend=false;mmDecorate(document);
+    document.querySelectorAll('.pg-tools,.cq-q-head').forEach(function(t){if(!t.querySelector('.mm-all'))t.insertAdjacentHTML('beforeend',mmBar());});};
+  document.addEventListener('DOMContentLoaded',function(){
+    run();
+    new MutationObserver(function(){if(!pend){pend=true;requestAnimationFrame(run);}}).observe(document.body,{childList:true,subtree:true});
+  });
+})();
 // Integración: tarjeta Decisión GGA en el Consolidado
 (function(){var _rd=renderDash;renderDash=function(){var r=_rd.apply(this,arguments);try{renderGGACard();}catch(e){}return r;};})();
 
